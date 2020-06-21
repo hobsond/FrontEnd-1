@@ -4,14 +4,20 @@ footer.app-footer {
     bottom: 0;
     width: 100%;
 
-    a {
+    .button-link {
         color: $global-inverse-color;
+        background: transparent;
+        border: none;
+        min-height: 80px;
 
         &:hover,
         &:active,
         &:focus {
             color: $global-primary-background !important;
             text-decoration: none;
+            border: none;
+            background: transparent;
+            outline: none !important;
         }
 
         i {
@@ -23,6 +29,12 @@ footer.app-footer {
         position: absolute;
         z-index: 1000;
         left: 0;
+
+        .uk-active {
+            a {
+                color: $global-primary-background !important;
+            }
+        }
 
 
         .small-circle {
@@ -65,7 +77,7 @@ footer.app-footer {
         }
 
 
-        ul {
+        .app-menu-list {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -108,5 +120,12 @@ footer.app-footer {
     .time:hover {
         color: $global-muted-color !important;
         cursor: default;
+    }
+
+    .uk-navbar-right {
+        li {
+            font-size: 16px;
+        }
+
     }
 }
