@@ -6,14 +6,14 @@ export default function AppMenu() {
         <div id='appMenu' className='uk-hidden'>
             <div className='large-circle circle'></div>
             <div className='medium-circle circle'></div>
-            <ul uk-switcher="connect: .app-pages">
+            <ul className='app-menu-list'>
                 <li>
-                    <Link className='top-icon-medium-circle uk-active' to={'/'}>
+                    <Link className='top-icon-medium-circle' to={'/home'}>
                         <i className='fal fa-home'></i>
                     </Link>
                 </li>
                 <li>
-                    <Link className='bottom-icon-large-circle' to={'/favorites'}>
+                    <Link className='bottom-icon-large-circle uk-link-toggle' to={'/favorites'}>
                         <i className='fal fa-heart-square'></i>
                     </Link>
                 </li>
