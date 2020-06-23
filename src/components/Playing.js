@@ -1,5 +1,5 @@
 import React from 'react';
-import Recommended from './RecommendedList.js';
+import RecommendedList from './RecommendedList.js';
 
 export default function Playing() {
     return (
@@ -38,7 +38,7 @@ export default function Playing() {
                         </nav>
                     </div>
                 </div>
-                <Recommended />
+                <RecommendedList />
             </div>
         </div>
     )

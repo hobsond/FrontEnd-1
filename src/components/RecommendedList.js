@@ -17,6 +17,16 @@ export default function Recommended() {
                 <div className='uk-card uk-card-secondary'>
                     <div className='uk-card-body'>
                         <h3 className='uk-card-title'>Top 10 Suggestions</h3>
+                        <div class="uk-flex uk-flex-center">
+                            <div className='uk-padding-small'><span style={{ background: '#910d27' }}>&nbsp; &nbsp; &nbsp;</span> Acousticness</div>
+                            <div className='uk-padding-small'><span style={{ background: '#b0102f' }}>&nbsp; &nbsp; &nbsp;</span> Danceability</div>
+                            <div className='uk-padding-small'><span style={{ background: '#cf1337' }}>&nbsp; &nbsp; &nbsp;</span> Energy</div>
+                            <div className='uk-padding-small'><span style={{ background: '#d63655' }}>&nbsp; &nbsp; &nbsp;</span> Instrumentalness</div>
+                            <div className='uk-padding-small'><span style={{ background: '#dd5a73' }}>&nbsp; &nbsp; &nbsp;</span> Liveness</div>
+                            <div className='uk-padding-small'><span style={{ background: '#e57d91' }}>&nbsp; &nbsp; &nbsp;</span> Loudness</div>
+                            <div className='uk-padding-small'><span style={{ background: '#eca1af' }}>&nbsp; &nbsp; &nbsp;</span> Tempo</div>
+                            <div className='uk-padding-small'><span style={{ background: '#f3c4cd' }}>&nbsp; &nbsp; &nbsp;</span> Valence</div>
+                        </div>
                         <div>
                             <ul className='uk-list uk-list-divider'>
                                 {
