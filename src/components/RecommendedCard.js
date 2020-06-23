@@ -48,14 +48,14 @@ export default function RecommendedCard(props) {
                                 <XAxis type='number' hide />
                                 <YAxis type='category' hide />
 
-                                <Bar dataKey='acousticness' stackId='id' fill='#910d27' />
-                                <Bar dataKey='danceability' stackId='id' fill='#b0102f' />
-                                <Bar dataKey='energy' stackId='id' fill='#cf1337' />
-                                <Bar dataKey='instrumentalness' stackId='id' fill='#d63655' />
-                                <Bar dataKey='liveness' stackId='id' fill='#dd5a73' />
-                                <Bar dataKey='loudness' stackId='id' fill='#e57d91' />
-                                <Bar dataKey='tempo' stackId='id' fill='#eca1af' />
-                                <Bar dataKey='valence' stackId='id' fill='#f3c4cd' />
+                                <Bar dataKey='acousticness' stackId='id' fill='#910d27' stroke='#0c101b' strokeWidth='2' />
+                                <Bar dataKey='danceability' stackId='id' fill='#b0102f' stroke='#0c101b' strokeWidth='2' />
+                                <Bar dataKey='energy' stackId='id' fill='#cf1337' stroke='#0c101b' strokeWidth='2' />
+                                <Bar dataKey='instrumentalness' stackId='id' fill='#d63655' stroke='#0c101b' strokeWidth='2' />
+                                <Bar dataKey='liveness' stackId='id' fill='#dd5a73' stroke='#0c101b' strokeWidth='2' />
+                                <Bar dataKey='loudness' stackId='id' fill='#e57d91' stroke='#0c101b' strokeWidth='2' />
+                                <Bar dataKey='tempo' stackId='id' fill='#eca1af' stroke='#0c101b' strokeWidth='2' />
+                                <Bar dataKey='valence' stackId='id' fill='#f3c4cd' stroke='#0c101b' strokeWidth='2' />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>

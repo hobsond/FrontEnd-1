@@ -3,7 +3,7 @@ import RecommendedList from './RecommendedList.js';
 
 export default function Playing() {
     return (
-        <div id='song-playing' className='song-playing uk-container' >
+        <div id='song-playing' className='song-playing uk-container uk-margin-xlarge-bottom' >
             <div className='uk-grid uk-child-width-1-1'>
                 <div>
                     <div className='album-cover uk-margin-auto'>
