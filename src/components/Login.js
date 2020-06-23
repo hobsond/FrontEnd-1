@@ -98,7 +98,13 @@ export default function Login() {
             ...signUpFormValues,
             [name]: value,
         })
+        if (signUpFormValues.password === signUpFormValues.confirmPassword) {
+            document.getElementById('confirmError').classList.add('uk-hidden');
+        } else {
+            document.getElementById('confirmError').classList.remove('uk-hidden');
+        }
     };
+
     const signUpOnSubmit = evt => {
         evt.preventDefault()
 
