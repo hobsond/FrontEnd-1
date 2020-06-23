@@ -21,3 +21,11 @@ html {
         color: $global-inverse-color !important;
     }
 }
+
+form {
+    .uk-text-danger {
+        width: 100%;
+        float: left;
+        line-height: 18px;
+    }
+}
