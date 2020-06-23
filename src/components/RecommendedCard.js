@@ -1,38 +1,21 @@
-import React, { PureComponent } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import React from 'react';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 
 export default function RecommendedCard(props) {
-    // const {
-    //     acousticness,
-    //     danceability,
-    //     energy,
-    //     liveness,
-    //     loudness,
-    //     tempo,
-    //     valence
-    // } = props
-    console.log('props', props)
-    console.log(`${props.acousticness}`)
-
     const chartData = [
         {
-            //id: `${props.song.track_id}`,
+            id: `${props.song.track_id}`,
             acousticness: `${props.song.acousticness}`,
             danceability: `${props.song.danceability}`,
             energy: `${props.song.energy}`,
+            instrumentalness: `${props.song.instrumentalness}`,
             liveness: `${props.song.liveness}`,
             loudness: `${props.song.loudness}`,
             tempo: `${props.song.tempo}`,
             valence: `${props.song.valence}`
         }
     ];
-    // const testData = [{
-    //     name: 'some name',
-    //     pv: `${props.song.acousticness}`,
-    //     uv: `${props.song.energy}`
-    // }]
 
-    console.log('chartData', chartData)
     return (
         <li className='uk-margin-remove-top'>
             <div className='uk-padding-small uk-grid-medium uk-grid'>
@@ -60,19 +43,19 @@ export default function RecommendedCard(props) {
                         <ResponsiveContainer>
                             <BarChart
                                 data={chartData}
-                                layout="vertical"
+                                layout='vertical'
                             >
+                                <XAxis type='number' hide />
+                                <YAxis type='category' hide />
 
-                                <XAxis type="number" hide />
-                                <YAxis type="category" hide />
-                                {/* <Tooltip /> */}
-                                <Bar dataKey='acousticness' stackId="a" fill="#e6153d" />
-                                <Bar dataKey='danceability' stackId="a" fill="#e92c50" />
-                                <Bar dataKey='energy' stackId="a" fill="#ff4569" />
-                                <Bar dataKey='liveness' stackId="a" fill="#ff748f" />
-                                <Bar dataKey='loudness' stackId="a" fill="#ff8ba2" />
-                                <Bar dataKey='tempo' stackId="a" fill="#ffa2b4" />
-                                <Bar dataKey='valence' stackId="a" fill="#ffb9c7" />
+                                <Bar dataKey='acousticness' stackId='id' fill='#910d27' />
+                                <Bar dataKey='danceability' stackId='id' fill='#b0102f' />
+                                <Bar dataKey='energy' stackId='id' fill='#cf1337' />
+                                <Bar dataKey='instrumentalness' stackId='id' fill='#d63655' />
+                                <Bar dataKey='liveness' stackId='id' fill='#dd5a73' />
+                                <Bar dataKey='loudness' stackId='id' fill='#e57d91' />
+                                <Bar dataKey='tempo' stackId='id' fill='#eca1af' />
+                                <Bar dataKey='valence' stackId='id' fill='#f3c4cd' />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
