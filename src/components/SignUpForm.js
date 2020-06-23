@@ -30,7 +30,7 @@ export default function SignUpForm(props) {
                     <input
                         className='uk-input'
                         name='password'
-                        type='text'
+                        type='password'
                         placeholder='Password'
                         value={values.password}
                         onChange={onInputChange}
@@ -42,13 +42,14 @@ export default function SignUpForm(props) {
                 <div className='uk-margin'>
                     <input
                         className='uk-input'
-                        type='text'
+                        type='password'
                         name='confirmPassword'
                         placeholder='Confirm Password'
                         value={values.confirmPassword}
                         onChange={onInputChange}
                     />
-                    <div className='uk-text-danger'>
+
+                    <div id='confirmError' className='uk-text-danger'>
                         <small>{formErrors.confirmPassword}</small>
                     </div>
                 </div>
