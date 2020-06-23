@@ -3,8 +3,13 @@ import SignInForm from './SignInForm.js';
 import SignUpForm from './SignUpForm.js';
 import signInSchema from '../validation/signInSchema.js';
 import signUpSchema from '../validation/signUpSchema.js';
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 import * as Yup from "yup";
+import { isCompositeComponent } from 'react-dom/test-utils';
+
+
 
 const initialSignInFormValues = {
     email: '',
@@ -33,6 +38,7 @@ export default function Login() {
     const [signUpFormValues, setSignUpFormValues] = useState(initialSignUpFormValues);
     const [signUpFormErrors, setSignUpFormErrors] = useState(initialSignUpFormErrors);
     const [disabled, setDisabled] = useState(initialDisabled);
+    const history = useHistory();
 
     const signInOnInputChange = evt => {
         const { name, value } = evt.target
@@ -64,6 +70,15 @@ export default function Login() {
             password: signInFormValues.password.trim(),
         };
 
+        axios
+        .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", {email:'taco@taco.taco', password:'tacotacotaco123'} )
+        .then((res) => {
+            console.log(res.data.token);
+            localStorage.setItem("token", res.data.token);
+            history.push('/playing')
+        })
+        .catch((err) => console.log(err));
+        
         //axios sign in
         //Note to Michael: please remember to add the following:
         // .finally(() => {
@@ -107,11 +122,23 @@ export default function Login() {
 
     const signUpOnSubmit = evt => {
         evt.preventDefault()
+        console.log('click')
 
         const user = {
             email: signInFormValues.email.trim(),
             password: signInFormValues.password.trim(),
         };
+
+        //console.log(user)
+
+        axios
+        .post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", {email:'taco@taco.taco', password:'tacotacotaco123'} )
+        .then((res) => {
+            console.log(res.data.token);
+            localStorage.setItem("token", res.data.token);
+            history.push('/playing')
+        })
+        .catch((err) => console.log(err));
 
         //axios sign up
 
