@@ -6,6 +6,7 @@ import axios from 'axios';
 
 
 import Login from './components/Login.js';
+import Home from './components/Home.js';
 import Playing from './components/Playing.js';
 import Favorites from './components/Favorites.js';
 import Albums from './components/Albums.js';
@@ -39,7 +40,7 @@ export default function App() {
               <Favorites />
             </Route>
             <Route path='/home'>
-              this is home page
+              <Home />
             </Route>
             <PlayQueue />
             <footer className="app-footer">
