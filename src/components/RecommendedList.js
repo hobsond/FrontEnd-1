@@ -14,7 +14,7 @@ export default function Recommended() {
     return (
         <div>
             <div className='uk-width-1-1'>
-                <div className='uk-card uk-card-secondary'>
+                <div className='uk-card uk-card-secondary uk-margin-xlarge-top'>
                     <div className='uk-card-body'>
                         <h3 className='uk-card-title'>Top 10 Suggestions</h3>
                         <div class="uk-flex uk-flex-center">
