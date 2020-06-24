@@ -66,25 +66,24 @@ export default function Login() {
         evt.preventDefault()
 
         const signInUser = {
-            username: signInFormValues.signInEmail.trim(),
+            // antony's backend
+            //username: signInFormValues.signInEmail.trim(),
+            email: signInFormValues.signInEmail.trim(),
             password: signInFormValues.signInPassword.trim(),
         };
         console.log('signin', signInUser)
 
         axios
-            .post("https://spotify-api-prod.herokuapp.com/auth/login", signInUser)
+            // antony's backend
+            //.post("https://spotify-api-prod.herokuapp.com/auth/login", signInUser)
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", signInUser)
             .then((res) => {
-                console.log(res.data.token);
+                console.log(res);
+                localStorage.setItem("userID", res.data.id);
                 localStorage.setItem("token", res.data.token);
                 history.push('/playing')
             })
             .catch((err) => console.log(err));
-
-        //axios sign in
-        //Note to Michael: please remember to add the following:
-        // .finally(() => {
-        //     setSignInFormValues(initialSignInFormValues)
-        // })
     };
     useEffect(() => {
         signInSchema.isValid(signInFormValues).then(valid => {
@@ -126,28 +125,30 @@ export default function Login() {
         console.log('click')
 
         const signUpUser = {
+            email: signUpFormValues.signUpEmail.trim(),
+            password: signUpFormValues.signUpPassword.trim(),
+            
+            /* antony's backend
             username: signUpFormValues.signUpEmail.trim(),
             password: signUpFormValues.signUpPassword.trim(),
             email: 'fakeEmail93@gmail.com',
+            */
         };
 
         console.log('signup', signUpUser)
 
         axios
-            .post("https://spotify-api-prod.herokuapp.com/auth/register", signUpUser)
+            // antonys backend
+            //.post("https://spotify-api-prod.herokuapp.com/auth/register", signUpUser)
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", signUpUser)
             .then((res) => {
-                console.log(res.data.token);
+                console.log(res);
+                localStorage.setItem("userID", res.data.id);
                 localStorage.setItem("token", res.data.token);
+                
                 history.push('/playing')
             })
             .catch((err) => console.log(err));
-
-        //axios sign up
-
-        //Note to Michael: please remember to add the following:
-        // .finally(() => {
-        //     setSignUpFormValues(initialSignUpFormValues)
-        // })
     };
     useEffect(() => {
         signUpSchema.isValid(signUpFormValues).then(valid => {
