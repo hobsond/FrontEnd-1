@@ -66,13 +66,13 @@ export default function Login() {
         evt.preventDefault()
 
         const signInUser = {
-            email: signInFormValues.signInEmail.trim(),
+            username: signInFormValues.signInEmail.trim(),
             password: signInFormValues.signInPassword.trim(),
         };
         console.log('signin', signInUser)
 
         axios
-            .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", signInUser)
+            .post("https://spotify-api-prod.herokuapp.com/auth/login", signInUser)
             .then((res) => {
                 console.log(res.data.token);
                 localStorage.setItem("token", res.data.token);
@@ -126,14 +126,15 @@ export default function Login() {
         console.log('click')
 
         const signUpUser = {
-            email: signUpFormValues.signUpEmail.trim(),
+            username: signUpFormValues.signUpEmail.trim(),
             password: signUpFormValues.signUpPassword.trim(),
+            email: 'fakeEmail93@gmail.com',
         };
 
         console.log('signup', signUpUser)
 
         axios
-            .post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", signUpUser)
+            .post("https://spotify-api-prod.herokuapp.com/auth/register", signUpUser)
             .then((res) => {
                 console.log(res.data.token);
                 localStorage.setItem("token", res.data.token);
