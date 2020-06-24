@@ -1,23 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppMenu from './AppMenu.js';
 import { Link } from 'react-router-dom';
 
-export default function AppNav() {
-    // Song Playing
-    function playAudio() {
-        document.getElementById('audioPlayer').play();
-        document.getElementById('playButton').classList.add('uk-hidden');
-        document.getElementById('pauseButton').classList.remove('uk-hidden');
-        document.getElementById('songCover').classList.add('spin');
-        document.getElementById('songCover').classList.remove('spin-paused');
-    }
-    // Song Paused
-    function pauseAudio() {
-        document.getElementById('audioPlayer').pause();
-        document.getElementById('pauseButton').classList.add('uk-hidden');
-        document.getElementById('playButton').classList.remove('uk-hidden');
-        document.getElementById('songCover').classList.add('spin-paused');
-    }
+export default function AppNav(props) {
+
 
     return (
         <div className='uk-background-secondary'>
@@ -55,10 +41,10 @@ export default function AppNav() {
                             <a><i className='fal fa-backward'></i></a>
                         </li>
                         <li>
-                            <a id='playButton' onClick={playAudio}><i className='fal fa-play fa-2x'></i></a>
+                            <a id='playButton' onClick={props.playAudio}><i className='fal fa-play fa-2x'></i></a>
                         </li>
                         <li>
-                            <a id='pauseButton' onClick={pauseAudio} className='uk-hidden'><i className='fal fa-pause fa-2x'></i></a>
+                            <a id='pauseButton' onClick={props.pauseAudio} className='uk-hidden'><i className='fal fa-pause fa-2x'></i></a>
                         </li>
                         <li>
                             <a><i className='fal fa-forward'></i></a></li>
