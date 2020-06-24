@@ -68,7 +68,7 @@ export default function AppNav() {
                         <li className='uk-visible@m'>
                             <a className='time'>
                                 <span id='audioPassedTime'>0:00</span>
-                                <span className='divider'>&nbsp / &nbsp</span>
+                                <span className='divider'>&nbsp; / &nbsp;</span>
                                 <span id='audioDurationTime'></span>
                             </a>
                         </li>
