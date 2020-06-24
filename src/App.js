@@ -13,6 +13,7 @@ import PlayLists from './components/PlayLists.js';
 import AppNav from './components/AppNav.js';
 import AppSearch from './components/AppSearch.js';
 import PlayQueue from './components/PlayQueue.js';
+import PrivateRoute from "./components/PrivateRoute";
 
 
 export default function App() {
@@ -26,18 +27,11 @@ export default function App() {
 
         <Route path='/' render={props =>
           <div>
-            <Route path='/albums'>
-              <Albums />
-            </Route>
-            <Route path='/playlists'>
-              <PlayLists />
-            </Route>
-            <Route path='/playing'>
-              <Playing />
-            </Route>
-            <Route path='/favorites'>
-              <Favorites />
-            </Route>
+            <PrivateRoute path='/albums' component={Albums} />
+            <PrivateRoute path='/playlists' component={PlayLists} />
+            <PrivateRoute path='/playing' component={Playing} />
+            <PrivateRoute path='/favorites' component={Favorites} />
+            
             <Route path='/home'>
               this is home page
             </Route>

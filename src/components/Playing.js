@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import RecommendedList from './RecommendedList.js';
 import {axiosWithAuth} from '../utils/axiosWithAuth'
+import Recommended from "./RecommendedList.js";
 
 function myFunction(){
     axiosWithAuth()
@@ -16,7 +17,20 @@ function myFunction(){
 };
 
 
+
+
 export default function Playing() {
+    //storing/setting song suggestion data here
+    const [suggestions, setSuggestions] = useState([]);
+
+    //when Playing component loads make authenticated request for suggestions songs
+    useEffect(() => {
+        console.log(localStorage.userID)
+        axiosWithAuth( )
+            .get( `/api/user/${localStorage.userID}/suggestions` )
+            .then( (res) => setSuggestions(res.data) )
+            .catch( (err) => console.log(err) )
+    }, []);
 
     return (
         <div id='song-playing' className='song-playing uk-container uk-margin-xlarge-bottom' >
@@ -55,7 +69,7 @@ export default function Playing() {
                         </nav>
                     </div>
                 </div>
-                <RecommendedList />
+                <RecommendedList suggestions={suggestions}/>
             </div>
         </div>
     )
