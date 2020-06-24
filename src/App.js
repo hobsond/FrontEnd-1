@@ -2,9 +2,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 
-import axios from 'axios';
-
-
 import Login from './components/Login.js';
 import Home from './components/Home.js';
 import Playing from './components/Playing.js';
