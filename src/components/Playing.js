@@ -2,9 +2,6 @@ import React from 'react';
 import RecommendedList from './RecommendedList.js';
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 
-
-
-
 function myFunction(){
     axiosWithAuth()
     .get("/api/spotify/connect")

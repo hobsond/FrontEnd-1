@@ -7,6 +7,9 @@ import axios from 'axios';
 
 import Login from './components/Login.js';
 import Playing from './components/Playing.js';
+import Favorites from './components/Favorites.js';
+import Albums from './components/Albums.js';
+import PlayLists from './components/PlayLists.js';
 import AppNav from './components/AppNav.js';
 import AppSearch from './components/AppSearch.js';
 import PlayQueue from './components/PlayQueue.js';
@@ -24,16 +27,16 @@ export default function App() {
         <Route path='/' render={props =>
           <div>
             <Route path='/albums'>
-              this is albums page
+              <Albums />
             </Route>
             <Route path='/playlists'>
-              this is playlists page
+              <PlayLists />
             </Route>
             <Route path='/playing'>
               <Playing />
             </Route>
             <Route path='/favorites'>
-              this is favorites page
+              <Favorites />
             </Route>
             <Route path='/home'>
               this is home page
