@@ -17,7 +17,7 @@ export default function Recommended() {
                 <div className='uk-card uk-card-secondary uk-margin-xlarge-top'>
                     <div className='uk-card-body'>
                         <h3 className='uk-card-title'>Top 10 Suggestions</h3>
-                        <div class="uk-flex uk-flex-center">
+                        <div className='uk-flex uk-flex-center'>
                             <div className='uk-padding-small'><span style={{ background: '#910d27' }}>&nbsp; &nbsp; &nbsp;</span> Acousticness</div>
                             <div className='uk-padding-small'><span style={{ background: '#b0102f' }}>&nbsp; &nbsp; &nbsp;</span> Danceability</div>
                             <div className='uk-padding-small'><span style={{ background: '#cf1337' }}>&nbsp; &nbsp; &nbsp;</span> Energy</div>

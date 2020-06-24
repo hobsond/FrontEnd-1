@@ -65,20 +65,20 @@ export default function Login() {
     const signInOnSubmit = evt => {
         evt.preventDefault()
 
-        const user = {
+        const signInUser = {
             email: signInFormValues.email.trim(),
             password: signInFormValues.password.trim(),
         };
 
         axios
-        .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", {email:'taco@taco.taco', password:'tacotacotaco123'} )
-        .then((res) => {
-            console.log(res.data.token);
-            localStorage.setItem("token", res.data.token);
-            history.push('/playing')
-        })
-        .catch((err) => console.log(err));
-        
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", { email: 'taco@taco.taco', password: 'tacotacotaco123' })
+            .then((res) => {
+                console.log(res.data.token);
+                localStorage.setItem("token", res.data.token);
+                history.push('/playing')
+            })
+            .catch((err) => console.log(err));
+
         //axios sign in
         //Note to Michael: please remember to add the following:
         // .finally(() => {
@@ -124,7 +124,7 @@ export default function Login() {
         evt.preventDefault()
         console.log('click')
 
-        const user = {
+        const signUpUser = {
             email: signInFormValues.email.trim(),
             password: signInFormValues.password.trim(),
         };
@@ -132,13 +132,13 @@ export default function Login() {
         //console.log(user)
 
         axios
-        .post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", {email:'taco@taco.taco', password:'tacotacotaco123'} )
-        .then((res) => {
-            console.log(res.data.token);
-            localStorage.setItem("token", res.data.token);
-            history.push('/playing')
-        })
-        .catch((err) => console.log(err));
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", { email: 'taco@taco.taco', password: 'tacotacotaco123' })
+            .then((res) => {
+                console.log(res.data.token);
+                localStorage.setItem("token", res.data.token);
+                history.push('/playing')
+            })
+            .catch((err) => console.log(err));
 
         //axios sign up
 
