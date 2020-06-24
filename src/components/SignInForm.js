@@ -15,7 +15,7 @@ export default function SignInForm(props) {
                 <div className='uk-margin'>
                     <input
                         className='uk-input'
-                        name='email'
+                        name='signInEmail'
                         type='email'
                         placeholder='Email'
                         onChange={onInputChange}
@@ -29,7 +29,7 @@ export default function SignInForm(props) {
                 <div className='uk-margin'>
                     <input
                         className='uk-input'
-                        name='password'
+                        name='signInPassword'
                         type='text'
                         placeholder='Password'
                         value={values.password}

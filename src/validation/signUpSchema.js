@@ -3,11 +3,11 @@ import * as Yup from "yup";
 //mixed.test(name: string, message: string, test: function)
 
 const signUpSchema = Yup.object().shape({
-    email: Yup
+    signUpEmail: Yup
         .string()
         .email('Must be a valid email address.')
         .required('Email is Required'),
-    password: Yup
+    signUpPassword: Yup
         .string()
         .min(8, 'Password must be at least 8 characters long.')
         // .matches(
@@ -18,7 +18,7 @@ const signUpSchema = Yup.object().shape({
 
     confirmPassword: Yup
         .string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .oneOf([Yup.ref('signUpPassword'), null], 'Passwords must match')
         .required('Confirm Password is Required'),
 })
 export default signUpSchema;

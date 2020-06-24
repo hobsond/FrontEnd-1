@@ -12,21 +12,21 @@ import { isCompositeComponent } from 'react-dom/test-utils';
 
 
 const initialSignInFormValues = {
-    email: '',
-    password: ''
+    signInEmail: '',
+    signUpPassword: ''
 };
 const initialSignInFormErrors = {
-    email: '',
-    password: ''
+    signInEmail: '',
+    signInPassword: ''
 };
 const initialSignUpFormValues = {
-    email: '',
-    password: '',
+    signUpEmail: '',
+    signUpPassword: '',
     confirmPassword: ''
 };
 const initialSignUpFormErrors = {
-    email: '',
-    password: '',
+    signUpEmail: '',
+    signUpPassword: '',
     confirmPassword: ''
 };
 const initialDisabled = true;
@@ -66,12 +66,13 @@ export default function Login() {
         evt.preventDefault()
 
         const signInUser = {
-            email: signInFormValues.email.trim(),
-            password: signInFormValues.password.trim(),
+            email: signInFormValues.signInEmail.trim(),
+            password: signInFormValues.signInPassword.trim(),
         };
+        console.log('signin', signInUser)
 
         axios
-            .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", { email: 'taco@taco.taco', password: 'tacotacotaco123' })
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", signInUser)
             .then((res) => {
                 console.log(res.data.token);
                 localStorage.setItem("token", res.data.token);
@@ -125,14 +126,14 @@ export default function Login() {
         console.log('click')
 
         const signUpUser = {
-            email: signInFormValues.email.trim(),
-            password: signInFormValues.password.trim(),
+            email: signUpFormValues.signUpEmail.trim(),
+            password: signUpFormValues.signUpPassword.trim(),
         };
 
-        //console.log(user)
+        console.log('signup', signUpUser)
 
         axios
-            .post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", { email: 'taco@taco.taco', password: 'tacotacotaco123' })
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", signUpUser)
             .then((res) => {
                 console.log(res.data.token);
                 localStorage.setItem("token", res.data.token);
@@ -165,7 +166,7 @@ export default function Login() {
                             <a href='#signIn'>Sign In</a>
                         </li>
                         <li>
-                            <a href='#signUp'>Sing Up</a>
+                            <a href='#signUp'>Sign Up</a>
                         </li>
                     </ul>
                     <ul className='uk-switcher'>
