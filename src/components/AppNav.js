@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from 'react';
 import AppMenu from './AppMenu.js';
 import { Link } from 'react-router-dom';
 
@@ -27,7 +28,7 @@ export default function AppNav(props) {
                     <ul id='mediaPlayer' className='uk-navbar-nav'>
                         <li className='uk-visible@m'>
                             <a href='#'>
-                                <img className='uk-border-circle' src='images/album-cover.jpg' width='50' height='50' />
+                                <img className='uk-border-circle' src='images/album-cover.jpg' width='50' height='50' alt='' />
                             </a>
                         </li>
                         <li className='uk-visible@m'>
@@ -70,7 +71,7 @@ export default function AppNav(props) {
                         </li>
                         <li>
                             <button className='uk-margin-right uk-padding-remove-right button-link'>
-                                <img className='uk-border-circle uk-blend-luminosity' width='35' height='35' src='images/profile-image.png' />
+                                <img className='uk-border-circle uk-blend-luminosity' width='35' height='35' src='images/profile-image.png' alt='User Profile' />
                             </button>
                             <div className='uk-background-secondary' uk-dropdown='pos: top-right; mode: click;animation: uk-animation-slide-bottom-small; duration: 1000'>
                                 <ul className='uk-nav uk-dropdown-nav'>
