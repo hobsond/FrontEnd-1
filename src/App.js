@@ -7,6 +7,7 @@ import Home from './components/Home.js';
 import Playing from './components/Playing.js';
 import Favorites from './components/Favorites.js';
 import Albums from './components/Albums.js';
+import AlbumPage from './components/AlbumPage.js';
 import PlayLists from './components/PlayLists.js';
 import AppNav from './components/AppNav.js';
 import AppSearch from './components/AppSearch.js';
@@ -54,6 +55,11 @@ export default function App() {
             </PrivateRoute> */}
 
             <PrivateRoute path='/favorites' component={Favorites} />
+
+            <Route path='/albumID123456789'>
+              <AlbumPage />
+            </Route>
+
 
             <Route path='/home'>
               <Home />
