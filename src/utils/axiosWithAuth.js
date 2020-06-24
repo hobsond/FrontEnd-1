@@ -5,6 +5,6 @@ export const axiosWithAuth = () => {
   console.log('making token')
   return axios.create({
     headers: { authorization: token },
-    baseURL: "https://spotify-suggestions-backend.herokuapp.com",
+    baseURL: "https://spotify-api-prod.herokuapp.com/",
   });
 };
