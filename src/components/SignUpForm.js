@@ -15,7 +15,7 @@ export default function SignUpForm(props) {
                 <div className='uk-margin'>
                     <input
                         className='uk-input'
-                        name='email'
+                        name='signUpEmail'
                         type='email'
                         placeholder='Email'
                         onChange={onInputChange}
@@ -29,7 +29,7 @@ export default function SignUpForm(props) {
                 <div className='uk-margin'>
                     <input
                         className='uk-input'
-                        name='password'
+                        name='signUpPassword'
                         type='password'
                         placeholder='Password'
                         value={values.password}

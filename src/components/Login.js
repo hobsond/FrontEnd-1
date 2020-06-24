@@ -12,21 +12,21 @@ import { isCompositeComponent } from 'react-dom/test-utils';
 
 
 const initialSignInFormValues = {
-    email: '',
-    password: ''
+    signInEmail: '',
+    signUpPassword: ''
 };
 const initialSignInFormErrors = {
-    email: '',
-    password: ''
+    signInEmail: '',
+    signInPassword: ''
 };
 const initialSignUpFormValues = {
-    email: '',
-    password: '',
+    signUpEmail: '',
+    signUpPassword: '',
     confirmPassword: ''
 };
 const initialSignUpFormErrors = {
-    email: '',
-    password: '',
+    signUpEmail: '',
+    signUpPassword: '',
     confirmPassword: ''
 };
 const initialDisabled = true;
@@ -65,20 +65,21 @@ export default function Login() {
     const signInOnSubmit = evt => {
         evt.preventDefault()
 
-        const user = {
-            email: signInFormValues.email.trim(),
-            password: signInFormValues.password.trim(),
+        const signInUser = {
+            email: signInFormValues.signInEmail.trim(),
+            password: signInFormValues.signInPassword.trim(),
         };
+        console.log('signin', signInUser)
 
         axios
-        .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", {email:'taco@taco.taco', password:'tacotacotaco123'} )
-        .then((res) => {
-            console.log(res.data.token);
-            localStorage.setItem("token", res.data.token);
-            history.push('/playing')
-        })
-        .catch((err) => console.log(err));
-        
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", signInUser)
+            .then((res) => {
+                console.log(res.data.token);
+                localStorage.setItem("token", res.data.token);
+                history.push('/playing')
+            })
+            .catch((err) => console.log(err));
+
         //axios sign in
         //Note to Michael: please remember to add the following:
         // .finally(() => {
@@ -124,21 +125,21 @@ export default function Login() {
         evt.preventDefault()
         console.log('click')
 
-        const user = {
-            email: signInFormValues.email.trim(),
-            password: signInFormValues.password.trim(),
+        const signUpUser = {
+            email: signUpFormValues.signUpEmail.trim(),
+            password: signUpFormValues.signUpPassword.trim(),
         };
 
-        //console.log(user)
+        console.log('signup', signUpUser)
 
         axios
-        .post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", {email:'taco@taco.taco', password:'tacotacotaco123'} )
-        .then((res) => {
-            console.log(res.data.token);
-            localStorage.setItem("token", res.data.token);
-            history.push('/playing')
-        })
-        .catch((err) => console.log(err));
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", signUpUser)
+            .then((res) => {
+                console.log(res.data.token);
+                localStorage.setItem("token", res.data.token);
+                history.push('/playing')
+            })
+            .catch((err) => console.log(err));
 
         //axios sign up
 
@@ -165,7 +166,7 @@ export default function Login() {
                             <a href='#signIn'>Sign In</a>
                         </li>
                         <li>
-                            <a href='#signUp'>Sing Up</a>
+                            <a href='#signUp'>Sign Up</a>
                         </li>
                     </ul>
                     <ul className='uk-switcher'>
