@@ -2,10 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 
-import axios from 'axios';
-
-
 import Login from './components/Login.js';
+import Home from './components/Home.js';
 import Playing from './components/Playing.js';
 import Favorites from './components/Favorites.js';
 import Albums from './components/Albums.js';
@@ -33,7 +31,7 @@ export default function App() {
             <PrivateRoute path='/favorites' component={Favorites} />
             
             <Route path='/home'>
-              this is home page
+              <Home />
             </Route>
             <PlayQueue />
             <footer className="app-footer">
