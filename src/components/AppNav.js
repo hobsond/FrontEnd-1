@@ -37,7 +37,7 @@ export default function AppNav() {
                     </ul>
                 </div>
                 <div className='uk-navbar-center'>
-                    <audio id='audioPlayer' src='https://spotify.com/track/0jjHmmFPqKM6nI8EIAxgYB' type='audio/mpeg' preload='auto'></audio>
+                    <audio id='audioPlayer' src='media/StillWoozy-Window.mp3' type='audio/mpeg' preload='auto'></audio>
                     <ul id='mediaPlayer' className='uk-navbar-nav'>
                         <li className='uk-visible@m'>
                             <a href='#'>
