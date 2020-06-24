@@ -1,40 +1,50 @@
 import React, { useEffect, useState } from "react";
 import RecommendedList from './RecommendedList.js';
-import {axiosWithAuth} from '../utils/axiosWithAuth'
-import Recommended from "./RecommendedList.js";
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-function myFunction(){
+function myFunction() {
     axiosWithAuth()
-    .get("/api/spotify/connect")
-    .then((res) => {
-        
-        //localStorage.setItem("token", res.data.token);
-        window.location = res.data.data;
-        console.log(res)
-        //history.push('/ezClap')
-    })
-    .catch((err) => console.log(err));
+        .get("/api/spotify/connect")
+        .then((res) => {
+
+            //localStorage.setItem("token", res.data.token);
+            window.location = res.data.data;
+            console.log(res)
+            //history.push('/ezClap')
+        })
+        .catch((err) => console.log(err));
 };
 
 
+export default function Playing(props) {
+    const {
+        playing,
+        paused
+    } = props;
+    setTimeout(function () {
+        if (playing) {
+            document.getElementById('songCover').classList.add('spin');
+            document.getElementById('songCover').classList.remove('spin-paused');
+        } else if (paused) {
+            document.getElementById('songCover').classList.add('spin-paused');
+        }
+    }, 100);
 
-
-export default function Playing() {
     //storing/setting song suggestion data here
     const [suggestions, setSuggestions] = useState([]);
 
     //when Playing component loads make authenticated request for suggestions songs
     useEffect(() => {
         console.log(localStorage.userID)
-        axiosWithAuth( )
-            .get( `/api/user/${localStorage.userID}/suggestions` )
-            .then( (res) => setSuggestions(res.data) )
-            .catch( (err) => console.log(err) )
+        axiosWithAuth()
+            .get(`/api/user/${localStorage.userID}/suggestions`)
+            .then((res) => setSuggestions(res.data))
+            .catch((err) => console.log(err))
     }, []);
 
     return (
         <div id='song-playing' className='song-playing uk-container uk-margin-xlarge-bottom' >
-            <button onClick={()=> myFunction()}>Button of Death</button>
+            <button onClick={() => myFunction()}>Button of Death</button>
             <div className='uk-grid uk-child-width-1-1'>
                 <div>
                     <div className='album-cover uk-margin-auto'>
@@ -69,7 +79,7 @@ export default function Playing() {
                         </nav>
                     </div>
                 </div>
-                <RecommendedList suggestions={suggestions}/>
+                <RecommendedList suggestions={suggestions} />
             </div>
         </div>
     )
