@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import RecommendedList from './RecommendedList.js';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
@@ -44,7 +46,7 @@ export default function Playing(props) {
 
     return (
         <div id='song-playing' className='song-playing uk-container uk-margin-xlarge-bottom' >
-            <button onClick={() => myFunction()}>Button of Death</button>
+            {/* <button onClick={() => myFunction()}>Button of Death</button> */}
             <div className='uk-grid uk-child-width-1-1'>
                 <div>
                     <div className='album-cover uk-margin-auto'>
@@ -58,7 +60,7 @@ export default function Playing(props) {
                             </a>
                             <ul>
                                 <li className='menu-item'>
-                                    <a className='fal fa-music-slash' href='#' target='_blank'></a>
+                                    <a className='fal fa-music-slash' href='#' target='_blank'>&nbsp; </a>
                                 </li>
                                 <li className='menu-item'>
                                     <a className='fal fa-share-square' href='#' target='_blank'></a>

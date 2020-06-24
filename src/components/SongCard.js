@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function FavoritesCard() {
+export default function SongCard() {
     return (
         <li className='uk-margin-remove-top'>
             <div className='uk-padding-small uk-grid-medium uk-flex-middle' data-uk-grid>
