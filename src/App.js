@@ -9,6 +9,7 @@ import Login from './components/Login.js';
 import Playing from './components/Playing.js';
 import Favorites from './components/Favorites.js';
 import Albums from './components/Albums.js';
+import PlayLists from './components/PlayLists.js';
 import AppNav from './components/AppNav.js';
 import AppSearch from './components/AppSearch.js';
 import PlayQueue from './components/PlayQueue.js';
@@ -29,7 +30,7 @@ export default function App() {
               <Albums />
             </Route>
             <Route path='/playlists'>
-              this is playlists page
+              <PlayLists />
             </Route>
             <Route path='/playing'>
               <Playing />
