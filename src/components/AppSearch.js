@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, } from 'react';
 import AlbumsCard from './AlbumsCard.js'
+import TrackCard from './TrackCard.js'
 import axios from 'axios';
 import {useRecoilState} from 'recoil'
 import {currentSongState, isPlayingState, queryState} from '../store/states'
@@ -9,6 +10,7 @@ import {currentSongState, isPlayingState, queryState} from '../store/states'
 
 export default function AppSearch() {
     const [query, setQuerey] = useRecoilState(queryState)
+    const [songList, setSongList] = useState([])
 
     const onSearch = (e) => {
         e.preventDefault();
@@ -17,10 +19,10 @@ export default function AppSearch() {
         console.log(`Sending POST request. \nPAYLOAD: ${payload}`)
         axios
             .post( `https://bw3-ds.herokuapp.com/search`, payload)
-            .then( (res) => console.dir(res) )
+            .then( (res) => {setSongList(res.data.tracks.items); console.log('123 ' + res.data.tracks.items) })
             .catch( (err) => console.log(err) )
     };
-
+    
     return (
         <div id='search' className='uk-modal' data-uk-modal>
             <div className='uk-modal-dialog uk-flex uk-flex-center uk-flex-middle'>
@@ -37,7 +39,20 @@ export default function AppSearch() {
                     </form>
                     <div>
                         {/* map over SongCard here */}
-                        <AlbumsCard />
+                        {/* <AlbumsCard /> */}
+                        {console.log(songList)}
+                        {(songList !== []) ?
+                        <ul className='uk-list uk-list-divider'>
+                        {   
+                            songList.map(song => (
+                            song.preview_url
+                            ? < TrackCard key={song.id} song={song} />
+                            : <div></div>
+                             )
+                        )}
+                        </ul>
+                            : <div></div>}
+
                     </div>
                 </div>
             </div>
