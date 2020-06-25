@@ -54,8 +54,6 @@ export default function App() {
             <PrivateRoute path='/playing'>
               <Playing paused={paused} playing={playing} />
             </PrivateRoute>
-            {/* <Playing paused={paused} playing={playing} />
-            </PrivateRoute> */}
 
 
             <PrivateRoute path='/favorites' component={Favorites} />
