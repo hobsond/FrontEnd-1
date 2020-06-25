@@ -30,7 +30,7 @@ export default function SignInForm(props) {
                     <input
                         className='uk-input'
                         name='signInPassword'
-                        type='text'
+                        type='password'
                         placeholder='Password'
                         value={values.password}
                         onChange={onInputChange}
