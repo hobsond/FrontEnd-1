@@ -51,13 +51,9 @@ export default function App() {
           <div>
             <PrivateRoute path='/albums' component={Albums} />
             <PrivateRoute path='/playlists' component={PlayLists} />
-            <PrivateRoute path='/playing'>
-              <Playing paused={paused} playing={playing} />
-            </PrivateRoute>
-
-
+            <PrivateRoute path='/playing' paused={paused} playing={playing} component={Playing} />
             <PrivateRoute path='/favorites' component={Favorites} />
-            <PrivateRoute path='/profile' component={Profile} />
+            <PrivateRoute path='/profile' testProp={'passed the props'}component={Profile} />
             <PrivateRoute path='/settings' component={Settings} />
 
             <Route path='/albumID123456789'>

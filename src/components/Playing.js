@@ -17,10 +17,12 @@ function myFunction() {
 };
 
 export default function Playing(props) {
+
     const {
         playing,
         paused
     } = props;
+
     setTimeout(function () {
         if (playing) {
             document.getElementById('songCover').classList.add('spin');
