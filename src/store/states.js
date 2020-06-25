@@ -23,5 +23,7 @@ const credentialsState = atom({
 
 const isPlayingState = atom({ key: "isPlaying", default: false })
 
+const queryState = atom({ user_query: "" })
+
 
 export { currentSongState, isPlayingState, credentialsState }
