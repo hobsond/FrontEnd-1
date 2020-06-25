@@ -40,7 +40,7 @@ export default function AppNav(props) {
                     </ul>
                 </div>
                 <div className='uk-navbar-center'>
-                    <audio id='audioPlayer' src='media/StillWoozy-Window.mp3' type='audio/mpeg' preload='auto'></audio>
+                    <audio id='audioPlayer' src='https://p.scdn.co/mp3-preview/2f1f53828c68f3a2a6d7391ae6d3d51aa79a9d26?cid=34f0135d39e843f9ac42da7e5780d113' type='audio/mpeg' preload='auto'></audio>
                     <ul id='mediaPlayer' className='uk-navbar-nav'>
                         <li className='uk-visible@m'>
                             <a href='#'>
