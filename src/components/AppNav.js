@@ -1,8 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import AppMenu from './AppMenu.js';
 import { Link } from 'react-router-dom';
 
 export default function AppNav() {
+    const [credentials, setCredentials] = useState({ username: ''});
+
+    useEffect(() => {
+        let id = localStorage.getItem('userID');
+        console.log(`/api/user/${id}`);
+        //axiosWithAuth()
+        axios
+            .get( `https://spotify-suggestions-backend.herokuapp.com/api/user/${id}` )
+            .then( (res) => {
+                if (res.data.phoneNumber){setCredentials({phoneNumber: res.data.phoneNumber})}
+                if (res.data.username){setCredentials({username: res.data.username })}
+                /*setCredentials(res.data)*/ // username: res.data.username 
+            })
+            .catch( (err) => console.log(err) )
+    }, []);
+
     // Song Playing
     function playAudio() {
         document.getElementById('audioPlayer').play();
@@ -88,8 +105,8 @@ export default function AppNav() {
                             </button>
                             <div className='uk-background-secondary' uk-dropdown='pos: top-right; mode: click;animation: uk-animation-slide-bottom-small; duration: 1000'>
                                 <ul className='uk-nav uk-dropdown-nav'>
-                                    <li className='uk-nav-header'>Maryam Mosstoufi</li>
-                                    <li><Link to={''}><i className='fal fa-user uk-margin-right'></i>Profile</Link></li>
+                                    <li className='uk-nav-header'>{credentials.username}</li>
+                                    <li><Link to={'/profile'}><i className='fal fa-user uk-margin-right'></i>Profile</Link></li>
                                     <li><Link to={''}><i className='fal fa-cog uk-margin-right'></i>Settings</Link></li>
                                     <li className='uk-nav-divider'></li>
                                     <li><Link to={''} id='signOut'><i className='fal fa-power-off uk-margin-right'></i>Sign Out</Link>

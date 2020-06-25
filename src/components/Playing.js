@@ -7,7 +7,6 @@ function myFunction(){
     axiosWithAuth()
     .get("/api/spotify/connect")
     .then((res) => {
-        
         //localStorage.setItem("token", res.data.token);
         window.location = res.data.data;
         console.log(res)
@@ -15,9 +14,6 @@ function myFunction(){
     })
     .catch((err) => console.log(err));
 };
-
-
-
 
 export default function Playing() {
     //storing/setting song suggestion data here
@@ -28,7 +24,7 @@ export default function Playing() {
         console.log(localStorage.userID)
         axiosWithAuth( )
             .get( `/api/user/${localStorage.userID}/suggestions` )
-            .then( (res) => setSuggestions(res.data) )
+            .then( (res) => console.log(res)/*setSuggestions(res.data)*/ )
             .catch( (err) => console.log(err) )
     }, []);
 
