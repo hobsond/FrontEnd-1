@@ -4,8 +4,17 @@ import axios from 'axios';
 import AppMenu from './AppMenu.js';
 import { Link } from 'react-router-dom';
 
-export default function AppNav(props) {
-    const [credentials, setCredentials] = useState({ username: '' });
+import {milliToMin} from '../utils/tools'
+import {useRecoilState} from 'recoil'
+import {currentSongState, isPlayingState, credentialsState} from '../store/states'
+import {toggleAudio} from '../utils/tools'
+
+
+
+export default function AppNav() {
+    const [credentials, setCredentials] = useRecoilState(credentialsState)
+    const currentSong = useRecoilState(currentSongState)
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
 
     useEffect(() => {
         let id = localStorage.getItem('userID');
@@ -16,11 +25,9 @@ export default function AppNav(props) {
             .then((res) => {
                 if (res.data.phoneNumber) { setCredentials({ phoneNumber: res.data.phoneNumber }) }
                 if (res.data.username) { setCredentials({ username: res.data.username }) }
-                /*setCredentials(res.data)*/ // username: res.data.username 
             })
             .catch((err) => console.log(err))
     }, []);
-
 
     return (
         <div className='uk-background-secondary'>
@@ -40,28 +47,28 @@ export default function AppNav(props) {
                     </ul>
                 </div>
                 <div className='uk-navbar-center'>
-                    <audio id='audioPlayer' src='https://p.scdn.co/mp3-preview/2f1f53828c68f3a2a6d7391ae6d3d51aa79a9d26?cid=34f0135d39e843f9ac42da7e5780d113' type='audio/mpeg' preload='auto'></audio>
+                    <audio id='audioPlayer' src={currentSong[0].audio} type='audio/mpeg' preload='auto'></audio>
                     <ul id='mediaPlayer' className='uk-navbar-nav'>
                         <li className='uk-visible@m'>
                             <a href='#'>
-                                <img className='uk-border-circle' src='images/album-cover.jpg' width='50' height='50' />
+                                <img className='uk-border-circle' src={currentSong[0].art} width='50' height='50' />
                             </a>
                         </li>
                         <li className='uk-visible@m'>
                             <div className='uk-padding-small'>
-                                <a href='#' className='uk-text-top'>Window</a>
+                                <a href='#' className='uk-text-top'>{currentSong[0].title}</a>
                                 <br />
-                                <a href='#'><small>Still Woozy</small></a>
+                                <a href='#'><small>{currentSong[0].artist}</small></a>
                             </div>
                         </li>
                         <li>
                             <a><i className='fal fa-backward'></i></a>
                         </li>
                         <li>
-                            <a id='playButton' onClick={props.playAudio}><i className='fal fa-play fa-2x'></i></a>
+                            <a id='playButton' onClick={() => toggleAudio(isPlaying, setIsPlaying)} className={isPlaying ? 'uk-hidden' : ''}><i className='fal fa-play fa-2x'></i></a>
                         </li>
                         <li>
-                            <a id='pauseButton' onClick={props.pauseAudio} className='uk-hidden'><i className='fal fa-pause fa-2x'></i></a>
+                            <a id='pauseButton' onClick={()=> toggleAudio(isPlaying, setIsPlaying)} className={!isPlaying ? 'uk-hidden' : ''}><i className='fal fa-pause fa-2x'></i></a>
                         </li>
                         <li>
                             <a><i className='fal fa-forward'></i></a></li>
@@ -72,7 +79,7 @@ export default function AppNav(props) {
                             <a className='time'>
                                 <span id='audioPassedTime'>0:00</span>
                                 <span className='divider'>&nbsp; / &nbsp;</span>
-                                <span id='audioDurationTime'></span>
+                                <span id='audioDurationTime'>{milliToMin(currentSong[0].duration)}</span>
                             </a>
                         </li>
                     </ul>

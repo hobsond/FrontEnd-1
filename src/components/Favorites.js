@@ -2,9 +2,9 @@ import React from 'react';
 import SongCard from './SongCard.js';
 
 export default function Favorites(props) {
-    console.log(props);
+    //console.log(props);
     const songList = props.favorites.data.items;
-    console.log(songList);
+    //console.log(songList);
     return (
         <section id='favorites' className='uk-section'>
             <div className='uk-container uk-margin-large-bottom'>
@@ -12,13 +12,12 @@ export default function Favorites(props) {
                 <div>
                     <ul className='uk-list uk-list-divider'>
                         {
-                            songList.map(song => {
-                                return (
-                                    < SongCard key={song.track.id} song={song} />
-                                )
-                            })
-                        }
-                        {/* Map over favorites and return the SongCard for each */}
+                            songList.map(song => (
+                            song.track.preview_url
+                            ? < SongCard key={song.track.id} song={song} />
+                            : <div></div> )
+                        )}
+                        {/* Map over favorites and return the SongCard for each song WITH A PREVIEW */}
                     </ul>
                 </div>
             </div>
