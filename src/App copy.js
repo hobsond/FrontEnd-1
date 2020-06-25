@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 
 import Login from './components/Login.js';
+import Profile from './components/Profile.js';
+import Settings from './components/Settings.js';
 import Home from './components/Home.js';
 import Playing from './components/Playing.js';
 import Favorites from './components/Favorites.js';
@@ -12,8 +14,9 @@ import PlayLists from './components/PlayLists.js';
 import AppNav from './components/AppNav.js';
 import AppSearch from './components/AppSearch.js';
 import PlayQueue from './components/PlayQueue.js';
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from './components/PrivateRoute';
 
+import dataFavorites from './utils/dataFavorites.js';
 
 export default function App() {
   // Song Playing
@@ -51,10 +54,13 @@ export default function App() {
             <PrivateRoute path='/playing'>
               <Playing paused={paused} playing={playing} />
             </PrivateRoute>
-            {/* <Playing paused={paused} playing={playing} />
-            </PrivateRoute> */}
 
-            <PrivateRoute path='/favorites' component={Favorites} />
+
+            <Route path='/favorites'>
+              <Favorites favorites={dataFavorites} />
+            </Route>
+            <PrivateRoute path='/profile' component={Profile} />
+            <PrivateRoute path='/settings' component={Settings} />
 
             <Route path='/albumID123456789'>
               <AlbumPage />
@@ -66,7 +72,7 @@ export default function App() {
             </Route>
 
             <PlayQueue />
-            <footer className="app-footer">
+            <footer className='app-footer'>
               <AppNav playAudio={playAudio} pauseAudio={pauseAudio} />
             </footer>
             <AppSearch />
