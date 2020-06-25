@@ -71,14 +71,13 @@ export default function App() {
           <div>
             <PrivateRoute path='/albums' component={Albums} />
             <PrivateRoute path='/playlists' playlists={dataPlaylists} component={PlayLists} />
-            {/* <PrivateRoute path='/playlist/4J0U1RR5LvL8bEH1gUQhNi' playlist={dataPlaylistTracks} component={PlayListPage} /> */}
             <PrivateRoute path='/favorites' favorites={dataFavorites} component={Favorites} />
             <PrivateRoute path='/playing' paused={paused} playing={playing} component={Playing} />
-            <PrivateRoute path='/favorites' favorites={dataFavorites} component={Favorites} />
             <PrivateRoute path='/profile' testProp={'passed the props'} component={Profile} />
             <PrivateRoute path='/settings' component={Settings} />
 
-            {/* <PrivateRoute path='/albumID123456789' component={AlbumPage} /> */}
+            {/* <PrivateRoute path='/playlist/4J0U1RR5LvL8bEH1gUQhNi' playlist={dataPlaylistTracks} component={PlayListPage} /> */}
+            <PrivateRoute path='/albumID123456789' component={AlbumPage} />
             <Route path='/albumID123456789'>
               <AlbumPage />
             </Route>
