@@ -16,6 +16,7 @@ export default function SongCard(props) {
     const songTitle = track.name;
     const songDuration = (0 + (track.duration_ms / 100000).toFixed(2).toString().replace('.', ':')).slice(-5);
     const albumCover = track.album.images[2].url;
+    const albumCoverMedium = track.album.images[1].url;
     const playUrl = track.preview_url
 
     const [currentSong, setCurrentSong] = useRecoilState(currentSongState)
@@ -40,6 +41,7 @@ export default function SongCard(props) {
             artist: artists,
             title: songTitle,
             art: albumCover,
+            artMedium: albumCoverMedium,
             audio: playUrl,
             duration: track.duration_ms,
             uri: track.uri,

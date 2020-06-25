@@ -29,7 +29,7 @@ export default function Playing() {
                             id='songCover' 
                             className={`uk-border-circle spin ${ !isPlaying ? 'spin-paused' : '' }`} 
                             alt='Album Cover'
-                            src={'images/album-cover.jpg'} /*   src={currentSong[0].art}     */   
+                            src={currentSong[0].artMedium}
                         />
                         {/* Added the state for the source image but it is rendering too small? Maybe we can fix it with styling? */}
                         {/* The size only gets messed up after changing songs with the new src code  */}
