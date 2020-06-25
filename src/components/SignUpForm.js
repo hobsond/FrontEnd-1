@@ -22,7 +22,7 @@ export default function SignUpForm(props) {
                         value={values.email}
                     />
                     <div className='uk-text-danger'>
-                        <small>{formErrors.email}</small>
+                        <small>{formErrors.signUpEmail}</small>
                     </div>
                 </div>
 
@@ -36,7 +36,7 @@ export default function SignUpForm(props) {
                         onChange={onInputChange}
                     />
                     <div className='uk-text-danger'>
-                        <small>{formErrors.password}</small>
+                        <small>{formErrors.signUpPassword}</small>
                     </div>
                 </div>
                 <div className='uk-margin'>

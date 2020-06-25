@@ -13,7 +13,7 @@ import { isCompositeComponent } from 'react-dom/test-utils';
 
 const initialSignInFormValues = {
     signInEmail: '',
-    signUpPassword: ''
+    signInPassword: ''
 };
 const initialSignInFormErrors = {
     signInEmail: '',
@@ -127,7 +127,7 @@ export default function Login() {
         const signUpUser = {
             email: signUpFormValues.signUpEmail.trim(),
             password: signUpFormValues.signUpPassword.trim(),
-            
+
             /* antony's backend
             username: signUpFormValues.signUpEmail.trim(),
             password: signUpFormValues.signUpPassword.trim(),
@@ -145,7 +145,7 @@ export default function Login() {
                 console.log(res);
                 localStorage.setItem("userID", res.data.id);
                 localStorage.setItem("token", res.data.token);
-                
+
                 history.push('/playing')
             })
             .catch((err) => console.log(err));
