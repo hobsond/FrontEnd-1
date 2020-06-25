@@ -22,7 +22,7 @@ export default function SignInForm(props) {
                         value={values.email}
                     />
                     <div className='uk-text-danger'>
-                        <small>{formErrors.email}</small>
+                        <small>{formErrors.signInEmail}</small>
                     </div>
                 </div>
 
@@ -36,7 +36,7 @@ export default function SignInForm(props) {
                         onChange={onInputChange}
                     />
                     <div className='uk-text-danger'>
-                        <small>{formErrors.password}</small>
+                        <small>{formErrors.signInPassword}</small>
                     </div>
                 </div>
                 <div className='uk-margin'>
