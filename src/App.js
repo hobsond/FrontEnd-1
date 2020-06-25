@@ -16,7 +16,7 @@ import AppSearch from './components/AppSearch.js';
 import PlayQueue from './components/PlayQueue.js';
 import PrivateRoute from "./components/PrivateRoute";
 
-
+import dataFavorites from './utils/dataFavorites.js';
 
 export default function App() {
   // Song Playing
@@ -52,8 +52,8 @@ export default function App() {
             <PrivateRoute path='/albums' component={Albums} />
             <PrivateRoute path='/playlists' component={PlayLists} />
             <PrivateRoute path='/playing' paused={paused} playing={playing} component={Playing} />
-            <PrivateRoute path='/favorites' component={Favorites} />
-            <PrivateRoute path='/profile' testProp={'passed the props'}component={Profile} />
+            <PrivateRoute path='/favorites' favorites={dataFavorites} component={Favorites} />
+            <PrivateRoute path='/profile' testProp={'passed the props'} component={Profile} />
             <PrivateRoute path='/settings' component={Settings} />
 
             <Route path='/albumID123456789'>
