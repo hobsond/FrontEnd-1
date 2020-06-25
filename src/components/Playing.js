@@ -6,6 +6,19 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 function myFunction() {
     axiosWithAuth()
+
+    .get("/api/spotify/connect")
+    .then((res) => {
+        //localStorage.setItem("token", res.data.token);
+        window.location = res.data.data;
+        console.log(res)
+        //history.push('/ezClap')
+    })
+    .catch((err) => console.log(err));
+};
+
+export default function Playing(props) {
+=======
         .get("/api/spotify/connect")
         .then((res) => {
 
@@ -18,7 +31,7 @@ function myFunction() {
 };
 
 
-export default function Playing(props) {
+
     const {
         playing,
         paused
@@ -32,16 +45,19 @@ export default function Playing(props) {
         }
     }, 100);
 
+
     //storing/setting song suggestion data here
     const [suggestions, setSuggestions] = useState([]);
 
     //when Playing component loads make authenticated request for suggestions songs
     useEffect(() => {
         console.log(localStorage.userID)
-        axiosWithAuth()
-            .get(`/api/user/${localStorage.userID}/suggestions`)
-            .then((res) => setSuggestions(res.data))
-            .catch((err) => console.log(err))
+
+        axiosWithAuth( )
+            .get( `/api/user/${localStorage.userID}/suggestions` )
+            .then( (res) => console.log(res)/*setSuggestions(res.data)*/ )
+            .catch( (err) => console.log(err) )
+
     }, []);
 
     return (
