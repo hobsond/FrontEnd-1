@@ -13,12 +13,12 @@ import Favorites from './components/Favorites.js';
 import Albums from './components/Albums.js';
 import AlbumPage from './components/AlbumPage.js';
 import PlayLists from './components/PlayLists.js';
-import PlayListPage from './components/PlayListPage.js';
+
 import AppNav from './components/AppNav.js';
 import AppSearch from './components/AppSearch.js';
 import PlayQueue from './components/PlayQueue.js';
 import PrivateRoute from "./components/PrivateRoute";
-
+import PlayListPage from './components/PlayListPage.js';
 import {
   dummyFavorites,
   dummyPlaylists,
@@ -54,20 +54,17 @@ export default function App() {
 
             <div>
               <PrivateRoute path='/albums' component={Albums} />
-              <PrivateRoute path='/playlists' playlists={dataPlaylists} component={PlayLists} />
+
               <PrivateRoute path='/playing' component={Playing} />
               <PrivateRoute path='/favorites' favorites={dataFavorites} component={Favorites} />
               <PrivateRoute path='/profile' component={Profile} />
               <PrivateRoute path='/settings' component={Settings} />
 
-              {/* <PrivateRoute path='/playlist/4J0U1RR5LvL8bEH1gUQhNi' playlist={dataPlaylistTracks} component={PlayListPage} /> */}
-              <Route path='/albumID123456789'>
-                <AlbumPage />
-              </Route>
+              <PrivateRoute path='/currentPlaylist' playlist={dataPlaylistTracks} component={PlayListPage} />
+              <PrivateRoute path='/playlists' playlists={dataPlaylists} component={PlayLists} />
+              <PrivateRoute path='/albumID123456789' component={AlbumPage} />
+              <PrivateRoute path='/home' component={Home} />
 
-              <Route path='/home'>
-                <Home />
-              </Route>
 
 
               <PlayQueue />

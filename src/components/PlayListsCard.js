@@ -7,7 +7,7 @@ export default function PlayListsCard(props) {
     const playlistDescription = props.playlist.description;
     const playlistBy = props.playlist.owner.display_name;
     const playlistId = props.playlist.id;
-    const playlistLink = `/playlist/${playlistId}`
+    //const playlistLink = `/${playlistId}`;
     return (
         <div>
             <div className='uk-card uk-card-secondary uk-card-body'>
@@ -15,7 +15,7 @@ export default function PlayListsCard(props) {
                     <img src={playlistCover} alt='Playlist Cover' />
                 </div>
                 <div className='uk-card-body uk-padding-small uk-text-center uk-padding-remove-bottom'>
-                    <Link to={playlistLink} className='uk-card-title uk-margin-remove'>{playlistTitle}</Link>
+                    <Link to={'/currentPlaylist'} className='uk-card-title uk-margin-remove'>{playlistTitle}</Link >
 
                     <div>
                         <small>{playlistDescription}</small>
