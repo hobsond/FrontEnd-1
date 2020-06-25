@@ -11,6 +11,7 @@ import Favorites from './components/Favorites.js';
 import Albums from './components/Albums.js';
 import AlbumPage from './components/AlbumPage.js';
 import PlayLists from './components/PlayLists.js';
+// import PlayListPage from './components/PlayListPage.js';
 import AppNav from './components/AppNav.js';
 import AppSearch from './components/AppSearch.js';
 import PlayQueue from './components/PlayQueue.js';
@@ -50,6 +51,13 @@ export default function App() {
   const [dataPlaylists, setDataPlaylists] = useState(dummyPlaylists);
   const [dataPlaylistById, setDataPlaylistById] = useState(dummyPlaylistById);
   const [dataPlaylistTracks, setDataPlaylistTracks] = useState(dummyPlaylistTracks);
+  const [currentSong, setCurrentSong] = useState();
+  const [artistPage, setArtistPage] = useState();
+  const [albumPage, setAlbumPage] = useState();
+  const [playQueue, setPlayQueue] = useState();
+  const [albums, setAlbums] = useState();
+  const [user, setUser] = useState();
+
 
   return (
     <div className='App'>
@@ -62,20 +70,19 @@ export default function App() {
 
           <div>
             <PrivateRoute path='/albums' component={Albums} />
-            <PrivateRoute path='/playlists' component={PlayLists} />
+            <PrivateRoute path='/playlists' playlists={dataPlaylists} component={PlayLists} />
+            {/* <PrivateRoute path='/playlist/4J0U1RR5LvL8bEH1gUQhNi' playlist={dataPlaylistTracks} component={PlayListPage} /> */}
+            <PrivateRoute path='/favorites' favorites={dataFavorites} component={Favorites} />
             <PrivateRoute path='/playing' paused={paused} playing={playing} component={Playing} />
             <PrivateRoute path='/favorites' favorites={dataFavorites} component={Favorites} />
             <PrivateRoute path='/profile' testProp={'passed the props'} component={Profile} />
             <PrivateRoute path='/settings' component={Settings} />
 
+            {/* <PrivateRoute path='/albumID123456789' component={AlbumPage} /> */}
             <Route path='/albumID123456789'>
               <AlbumPage />
             </Route>
-
-
-            <Route path='/home'>
-              <Home />
-            </Route>
+            <PrivateRoute path='/home' component={Home} />
 
             <PlayQueue />
             <footer className="app-footer">

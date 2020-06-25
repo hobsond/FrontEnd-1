@@ -18,7 +18,6 @@ export default function Favorites(props) {
                                 )
                             })
                         }
-                        {/* Map over favorites and return the SongCard for each */}
                     </ul>
                 </div>
             </div>
