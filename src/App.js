@@ -16,7 +16,14 @@ import AppSearch from './components/AppSearch.js';
 import PlayQueue from './components/PlayQueue.js';
 import PrivateRoute from "./components/PrivateRoute";
 
-import dataFavorites from './utils/dataFavorites.js';
+import {
+  dummyFavorites,
+  dummyPlaylists,
+  dummyPlaylistById,
+  dummyPlaylistTracks
+} from './utils/dummyData.js';
+
+
 
 export default function App() {
   // Song Playing
@@ -38,6 +45,11 @@ export default function App() {
     setPaused(true);
   }
 
+  // Data States
+  const [dataFavorites, setDataFavorites] = useState(dummyFavorites);
+  const [dataPlaylists, setDataPlaylists] = useState(dummyPlaylists);
+  const [dataPlaylistById, setDataPlaylistById] = useState(dummyPlaylistById);
+  const [dataPlaylistTracks, setDataPlaylistTracks] = useState(dummyPlaylistTracks);
 
   return (
     <div className='App'>
