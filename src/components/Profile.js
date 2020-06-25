@@ -3,8 +3,11 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import axiosWithAuth from "axios";
 
-export default function Profile(props) {
-    const [credentials, setCredentials] = useState({phoneNumber: '', username: ''});
+import {useRecoilState} from 'recoil'
+import {credentialsState} from '../store/states'
+
+export default function Profile() {
+    const [credentials, setCredentials] = useRecoilState(credentialsState);
     //const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const history = useHistory();
@@ -22,7 +25,6 @@ export default function Profile(props) {
     };
 
     useEffect(() => {
-        console.log(props)
         let id = localStorage.getItem('userID');
         console.log(`/api/user/${id}`);
         //axiosWithAuth()

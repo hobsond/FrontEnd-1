@@ -4,35 +4,12 @@ import React, { useEffect, useState } from "react";
 import RecommendedList from './RecommendedList.js';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-function myFunction() {
-    axiosWithAuth()
-        .get("/api/spotify/connect")
-        .then((res) => {
-            //localStorage.setItem("token", res.data.token);
-            window.location = res.data.data;
-            console.log(res)
-            //history.push('/ezClap')
-        })
-        .catch((err) => console.log(err));
-};
+import {useRecoilState} from 'recoil'
+import {currentSongState, isPlayingState} from '../store/states'
 
-export default function Playing(props) {
-
-    const {
-        playing,
-        paused
-    } = props;
-
-    setTimeout(function () {
-        if (playing) {
-            document.getElementById('songCover').classList.add('spin');
-            document.getElementById('songCover').classList.remove('spin-paused');
-        } else if (paused) {
-            document.getElementById('songCover').classList.add('spin-paused');
-        }
-    }, 100);
-    //storing/setting song suggestion data here
-    const [suggestions, setSuggestions] = useState([]);
+export default function Playing() {
+    const currentSong = useRecoilState(currentSongState)
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
 
     //when Playing component loads make authenticated request for suggestions songs
     useEffect(() => {
@@ -48,8 +25,14 @@ export default function Playing(props) {
             <div className='uk-grid uk-child-width-1-1'>
                 <div>
                     <div className='album-cover uk-margin-auto'>
-                        <img id='songCover' className='uk-border-circle' src='images/album-cover.jpg' alt='Album Cover' />
-                        {/* Source of this image needs to be replaced with album cover image of song playing */}
+                        <img 
+                            id='songCover' 
+                            className={`uk-border-circle spin ${ !isPlaying ? 'spin-paused' : '' }`} 
+                            alt='Album Cover'
+                            src={'images/album-cover.jpg'} /*   src={currentSong[0].art}     */   
+                        />
+                        {/* Added the state for the source image but it is rendering too small? Maybe we can fix it with styling? */}
+                        {/* The size only gets messed up after changing songs with the new src code  */}
                         <nav className='song-nav'>
                             <div className='song-nav-bg nav-toggle'></div>
                             <a className='menu-toggler nav-toggle' uk-toggle='target: .nav-toggle; cls: toggled-open'>
@@ -79,7 +62,7 @@ export default function Playing(props) {
                         </nav>
                     </div>
                 </div>
-                <RecommendedList suggestions={suggestions} />
+                <RecommendedList/>
             </div>
         </div>
     )

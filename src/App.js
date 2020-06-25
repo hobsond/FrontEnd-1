@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 
+import {RecoilRoot} from 'recoil'
+
 import Login from './components/Login.js';
 import Profile from './components/Profile.js';
 import Settings from './components/Settings.js';
@@ -24,27 +26,7 @@ import {
   dummyPlaylistTracks
 } from './utils/dummyData.js';
 
-
-
 export default function App() {
-  // Song Playing
-  const [playing, setPlaying] = useState(false);
-  const [paused, setPaused] = useState(true);
-  function playAudio() {
-    document.getElementById('audioPlayer').play();
-    document.getElementById('playButton').classList.add('uk-hidden');
-    document.getElementById('pauseButton').classList.remove('uk-hidden');
-    setPlaying(true);
-    setPaused(false);
-  }
-  // Song Paused
-  function pauseAudio() {
-    document.getElementById('audioPlayer').pause();
-    document.getElementById('pauseButton').classList.add('uk-hidden');
-    document.getElementById('playButton').classList.remove('uk-hidden');
-    setPlaying(false);
-    setPaused(true);
-  }
 
   // Data States
   const [dataFavorites, setDataFavorites] = useState(dummyFavorites);
@@ -60,38 +42,44 @@ export default function App() {
 
 
   return (
-    <div className='App'>
-      <Switch>
-        <Route path='/login' render={props =>
-          <Login />
-        } />
+    <RecoilRoot>
+      <div className='App'>
+        <Switch>
+          <Route path='/login' render={props =>
+            <Login />
+          } />
 
-        <Route path='/' render={props =>
 
-          <div>
-            <PrivateRoute path='/albums' component={Albums} />
-            <PrivateRoute path='/playlists' playlists={dataPlaylists} component={PlayLists} />
-            <PrivateRoute path='/favorites' favorites={dataFavorites} component={Favorites} />
-            <PrivateRoute path='/playing' paused={paused} playing={playing} component={Playing} />
-            <PrivateRoute path='/profile' testProp={'passed the props'} component={Profile} />
-            <PrivateRoute path='/settings' component={Settings} />
+          <Route path='/' render={props =>
 
-            {/* <PrivateRoute path='/playlist/4J0U1RR5LvL8bEH1gUQhNi' playlist={dataPlaylistTracks} component={PlayListPage} /> */}
-            <PrivateRoute path='/albumID123456789' component={AlbumPage} />
-            <Route path='/albumID123456789'>
-              <AlbumPage />
-            </Route>
-            <PrivateRoute path='/home' component={Home} />
+            <div>
+              <PrivateRoute path='/albums' component={Albums} />
+              <PrivateRoute path='/playlists' component={PlayLists} />
+              <PrivateRoute path='/playing' component={Playing} />
+              <PrivateRoute path='/favorites' favorites={dataFavorites} component={Favorites} />
+              <PrivateRoute path='/profile' component={Profile} />
+              <PrivateRoute path='/settings' component={Settings} />
+    
+              {/* <PrivateRoute path='/playlist/4J0U1RR5LvL8bEH1gUQhNi' playlist={dataPlaylistTracks} component={PlayListPage} /> */}
+              <Route path='/albumID123456789'>
+                <AlbumPage />
+              </Route>
 
-            <PlayQueue />
-            <footer className="app-footer">
-              <AppNav playAudio={playAudio} pauseAudio={pauseAudio} />
-            </footer>
-            <AppSearch />
+              <Route path='/home'>
+                <Home />
+              </Route>
 
-          </div>
-        } />
-      </Switch>
-    </div>
+
+              <PlayQueue />
+              <footer className="app-footer">
+                <AppNav  />
+              </footer>
+              <AppSearch />
+
+            </div>
+          } />
+        </Switch>
+      </div>
+    </RecoilRoot>
   );
 }
