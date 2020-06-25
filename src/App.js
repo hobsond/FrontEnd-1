@@ -28,7 +28,7 @@ import {
 
 export default function App() {
 
-  // Data States
+  // Data State
   const [dataFavorites, setDataFavorites] = useState(dummyFavorites);
   const [dataPlaylists, setDataPlaylists] = useState(dummyPlaylists);
   const [dataPlaylistById, setDataPlaylistById] = useState(dummyPlaylistById);
