@@ -51,7 +51,7 @@ export default function AppNav() {
                     <ul id='mediaPlayer' className='uk-navbar-nav'>
                         <li className='uk-visible@m'>
                             <a href='#'>
-                                <img className='uk-border-circle' src={currentSong[0].art} width='50' height='50' />
+                                <img src={currentSong[0].art} width='50' height='50' />
                             </a>
                         </li>
                         <li className='uk-visible@m'>
@@ -102,7 +102,7 @@ export default function AppNav() {
                                     <li><Link to={'/profile'}><i className='fal fa-user uk-margin-right'></i>Profile</Link></li>
                                     <li><Link to={'/settings'}><i className='fal fa-cog uk-margin-right'></i>Settings</Link></li>
                                     <li className='uk-nav-divider'></li>
-                                    <li onClick={()=>{localStorage.clear()}} ><Link to={'/'} id='signOut'><i className='fal fa-power-off uk-margin-right'></i>Sign Out</Link>
+                                    <li onClick={() => { localStorage.clear() }} ><Link to={'/'} id='signOut'><i className='fal fa-power-off uk-margin-right'></i>Sign Out</Link>
                                     </li>
                                 </ul>
                             </div>

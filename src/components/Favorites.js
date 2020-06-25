@@ -17,7 +17,7 @@ export default function Favorites(props) {
                             ? < SongCard key={song.track.id} song={song} />
                             : <div></div> )
                         )}
-                        {/* Map over favorites and return the SongCard for each song WITH A PREVIEW */}
+                        
                     </ul>
                 </div>
             </div>
