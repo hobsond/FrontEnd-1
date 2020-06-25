@@ -14,20 +14,20 @@ export default function SongCard(props) {
     const albumCover = track.album.images[2].url;
     const playUrl = track.preview_url
 
-    console.log(playUrl)
+    // console.log(playUrl)
     return (
         <li className='uk-margin-remove-top'>
             <div className='uk-padding-small uk-grid-medium uk-flex-middle' data-uk-grid>
                 <div className='uk-width-auto'>
                     <div className='switching-icons'>
                         <i className='fal fa-music-alt'></i>
-                        <a type='button' onClick=''>
+                        <a type='button'>
                             <i className='fal fa-play-circle'></i>
                         </a>
                         <i className='fal fa-volume'></i>
                     </div>
-                    <img className='uk-comment-avatar uk-border-circle' src={albumCover} width='50'
-                        height='50' alt='' />
+                    <img className='uk-comment-avatar' src={albumCover} width='64'
+                        height='64' alt='' />
                 </div>
                 <div className='uk-width-expand'>
                     <h4 className='uk-comment-title uk-margin-remove'>
