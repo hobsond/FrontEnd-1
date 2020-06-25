@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import RecommendedList from './RecommendedList.js';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-import {useRecoilState} from 'recoil'
-import {currentSongState, isPlayingState} from '../store/states'
+import { useRecoilState } from 'recoil'
+import { currentSongState, isPlayingState } from '../store/states'
 
 export default function Playing() {
     const currentSong = useRecoilState(currentSongState)
@@ -25,9 +25,9 @@ export default function Playing() {
             <div className='uk-grid uk-child-width-1-1'>
                 <div>
                     <div className='album-cover uk-margin-auto'>
-                        <img 
-                            id='songCover' 
-                            className={`uk-border-circle spin ${ !isPlaying ? 'spin-paused' : '' }`} 
+                        <img
+                            id='songCover'
+                            className={`uk-border-circle spin ${!isPlaying ? 'spin-paused' : ''}`}
                             alt='Album Cover'
                             src={currentSong[0].artMedium}
                         />
@@ -61,8 +61,19 @@ export default function Playing() {
                             </ul>
                         </nav>
                     </div>
+                    <div className='uk-text-center uk-margin-top'>
+                        <h1 className='uk-text-primary'>Song Title</h1>
+                        <div className='uk-margin-bottom'>
+                            <h3 className='uk-inline uk-margin-remove'><i className='fal fa-user-music'>&nbsp;</i></h3>
+                            <h3 className='uk-inline uk-margin-remove'>Song Artist </h3>
+                        </div>
+                        <div>
+                            <h4 className='uk-inline uk-margin-remove uk-text-muted'><i className='fal fa-album'>&nbsp;</i></h4>
+                            <h4 className='uk-inline uk-margin-remove uk-text-muted'>Album Title</h4>
+                        </div>
+                    </div>
                 </div>
-                <RecommendedList/>
+                <RecommendedList />
             </div>
         </div>
     )
