@@ -54,7 +54,7 @@ export default function App() {
 
             <div>
               <PrivateRoute path='/albums' component={Albums} />
-              <PrivateRoute path='/playlists' component={PlayLists} />
+              <PrivateRoute path='/playlists' playlists={dataPlaylists} component={PlayLists} />
               <PrivateRoute path='/playing' component={Playing} />
               <PrivateRoute path='/favorites' favorites={dataFavorites} component={Favorites} />
               <PrivateRoute path='/profile' component={Profile} />
