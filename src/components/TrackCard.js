@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {useHistory} from 'react-router-dom'
 import {useRecoilState} from 'recoil'
 import {currentSongState, isPlayingState} from '../store/states'
 import {toggleAudio, sleep, milliToMin} from '../utils/tools'
@@ -42,6 +42,7 @@ export default function SongCard(props) {
             id: props.song.id,
             artist: artistsNames,
             title: props.song.name,
+            album: props.song.album.name,
             art: props.song.album.images[0].url,
             artMedium: props.song.album.images[1].url,
             audio: props.song.preview_url,
@@ -53,12 +54,19 @@ export default function SongCard(props) {
         });
         setTimeout(() => {  console.log(`Now playing ${props.song.name} at ${props.song.preview_url}`); }, 300); 
     }
+
+    function exitModal(){
+        let modal = document.getElementById("search");
+        modal.parentNode.removeChild(modal);
+        playSong();
+        history.push('/playing')
+    }
     
     console.log('track')
     /*console.log(track)*/
-   
+    let history = useHistory();
     return (
-        <li className='uk-margin-remove-top'>
+        <li className='uk-margin-remove-top' >
             <div className='uk-padding-small uk-grid-medium uk-flex-middle' data-uk-grid>
                 <div className='uk-width-auto'>
                     <div className='switching-icons'>
@@ -73,9 +81,9 @@ export default function SongCard(props) {
                 </div>
                 <div className='uk-width-expand'>
                     <h4 className='uk-comment-title uk-margin-remove'>
-                        <a className='uk-link-reset' href='#'>
+                        <p className='uk-link-reset' onClick={e=> exitModal()}>
                             {props.song.name}
-                        </a>
+                        </p>
                     </h4>
                     <small className=' uk-float-right'>{milliToMin(props.song.duration_ms)}</small>
                     <p className='uk-comment-meta uk-margin-remove-top'>

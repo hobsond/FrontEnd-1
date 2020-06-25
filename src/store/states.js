@@ -6,6 +6,7 @@ const currentSongState = atom({
         id: '0H39MdGGX6dbnnQPt6NQkZ',
         artist: 'Still Woozy',
         title: 'Window',
+        album: 'Walls',
         art: 'images/album-cover.jpg',
         audio: 'https://p.scdn.co/mp3-preview/2f1f53828c68f3a2a6d7391ae6d3d51aa79a9d26?cid=34f0135d39e843f9ac42da7e5780d113',
         duration: '142262',

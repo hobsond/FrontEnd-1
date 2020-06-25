@@ -35,7 +35,7 @@ export default function AppSearch() {
                         placeholder='Search...'
                         defaultValue={query}
                         onChange={e => setQuerey(e.target.value)} />
-                        <button onClick={onSearch}>SEARCH</button>
+                        <button style={{display:'none'}} type='submit' onClick={onSearch}></button>
                     </form>
                     <div>
                         {/* map over SongCard here */}
