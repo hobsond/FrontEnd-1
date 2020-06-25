@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 
-import {RecoilRoot} from 'recoil'
+import { RecoilRoot } from 'recoil'
 
 import Login from './components/Login.js';
 import Profile from './components/Profile.js';
@@ -13,7 +13,7 @@ import Favorites from './components/Favorites.js';
 import Albums from './components/Albums.js';
 import AlbumPage from './components/AlbumPage.js';
 import PlayLists from './components/PlayLists.js';
-// import PlayListPage from './components/PlayListPage.js';
+import PlayListPage from './components/PlayListPage.js';
 import AppNav from './components/AppNav.js';
 import AppSearch from './components/AppSearch.js';
 import PlayQueue from './components/PlayQueue.js';
@@ -59,7 +59,7 @@ export default function App() {
               <PrivateRoute path='/favorites' favorites={dataFavorites} component={Favorites} />
               <PrivateRoute path='/profile' component={Profile} />
               <PrivateRoute path='/settings' component={Settings} />
-    
+
               {/* <PrivateRoute path='/playlist/4J0U1RR5LvL8bEH1gUQhNi' playlist={dataPlaylistTracks} component={PlayListPage} /> */}
               <Route path='/albumID123456789'>
                 <AlbumPage />
@@ -72,7 +72,7 @@ export default function App() {
 
               <PlayQueue />
               <footer className="app-footer">
-                <AppNav  />
+                <AppNav />
               </footer>
               <AppSearch />
 
