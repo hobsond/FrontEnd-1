@@ -1,6 +1,4 @@
 import React from 'react';
-import Popular from './Popular.js';
-import Favorites from './Favorites.js';
 
 export default function Home() {
     return (

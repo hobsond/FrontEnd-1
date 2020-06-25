@@ -1,8 +1,8 @@
 import React from 'react';
 import SongCard from './SongCard.js';
 
-export default function Favorites() {
 
+export default function AlbumPage() {
     return (
         <section id='favorites' className='uk-section'>
             <div className='uk-container uk-margin-large-bottom'>
@@ -10,7 +10,7 @@ export default function Favorites() {
                 <div>
                     <ul className='uk-list uk-list-divider'>
                         <SongCard />
-                        {/* Map over favorites and return the SongCard for each */}
+                        {/* Map over songs in the album and return the SongCard for each */}
                     </ul>
                 </div>
             </div>

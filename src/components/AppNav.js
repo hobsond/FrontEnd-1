@@ -1,3 +1,4 @@
+
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import AppMenu from './AppMenu.js';
@@ -36,6 +37,7 @@ export default function AppNav() {
         document.getElementById('songCover').classList.add('spin-paused');
     }
 
+
     return (
         <div className='uk-background-secondary'>
             <nav className='uk-navbar-container uk-navbar-transparent uk-navbar'>
@@ -58,7 +60,7 @@ export default function AppNav() {
                     <ul id='mediaPlayer' className='uk-navbar-nav'>
                         <li className='uk-visible@m'>
                             <a href='#'>
-                                <img className='uk-border-circle' src='images/album-cover.jpg' width='50' height='50' />
+                                <img className='uk-border-circle' src='images/album-cover.jpg' width='50' height='50' alt='' />
                             </a>
                         </li>
                         <li className='uk-visible@m'>
@@ -72,10 +74,10 @@ export default function AppNav() {
                             <a><i className='fal fa-backward'></i></a>
                         </li>
                         <li>
-                            <a id='playButton' onClick={playAudio}><i className='fal fa-play fa-2x'></i></a>
+                            <a id='playButton' onClick={props.playAudio}><i className='fal fa-play fa-2x'></i></a>
                         </li>
                         <li>
-                            <a id='pauseButton' onClick={pauseAudio} className='uk-hidden'><i className='fal fa-pause fa-2x'></i></a>
+                            <a id='pauseButton' onClick={props.pauseAudio} className='uk-hidden'><i className='fal fa-pause fa-2x'></i></a>
                         </li>
                         <li>
                             <a><i className='fal fa-forward'></i></a></li>
@@ -101,7 +103,7 @@ export default function AppNav() {
                         </li>
                         <li>
                             <button className='uk-margin-right uk-padding-remove-right button-link'>
-                                <img className='uk-border-circle uk-blend-luminosity' width='35' height='35' src='images/profile-image.png' />
+                                <img className='uk-border-circle uk-blend-luminosity' width='35' height='35' src='images/profile-image.png' alt='User Profile' />
                             </button>
                             <div className='uk-background-secondary' uk-dropdown='pos: top-right; mode: click;animation: uk-animation-slide-bottom-small; duration: 1000'>
                                 <ul className='uk-nav uk-dropdown-nav'>
