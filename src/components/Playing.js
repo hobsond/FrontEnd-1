@@ -20,6 +20,12 @@ export default function Playing() {
             .catch((err) => console.log(err))
     }, []);
 
+    function favorite(e){
+        console.log(e)
+        e.preventDefault();
+        console.log('this song is now a favorite')
+    }
+
     return (
         <div id='song-playing' className='song-playing uk-container uk-margin-xlarge-bottom' >
             <div className='uk-grid uk-child-width-1-1'>
@@ -46,7 +52,7 @@ export default function Playing() {
                                 <li className='menu-item'>
                                     <a className='fal fa-share-square' href='#' target='_blank'></a>
                                 </li>
-                                <li className='menu-item'>
+                                <li className='menu-item' onClick={e => favorite(e)}>
                                     <a className='fal fa-heart' href='#' target='_blank'></a>
                                 </li>
                                 <li className='menu-item'>
