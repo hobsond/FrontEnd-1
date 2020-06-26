@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {useRecoilState} from 'recoil'
-import {currentSongState, isPlayingState} from '../store/states'
-import {toggleAudio, sleep} from '../utils/tools'
+import { useRecoilState } from 'recoil'
+import { currentSongState, isPlayingState } from '../store/states'
+import { toggleAudio, sleep } from '../utils/tools'
 
 export default function SongCard(props) {
     const track = props.song.track;
@@ -22,20 +22,20 @@ export default function SongCard(props) {
     const [currentSong, setCurrentSong] = useRecoilState(currentSongState)
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
 
-    async function playSong(){
-        if (isPlaying === true){ 
+    async function playSong() {
+        if (isPlaying === true) {
             toggleAudio(isPlaying, setIsPlaying);
             setSong();
             toggleAudio(isPlaying, setIsPlaying)
             //await sleep(500).then(() => { toggleAudio(isPlaying, setIsPlaying) });
         }
-        else{
+        else {
             setSong();
             await sleep(500).then(() => { toggleAudio(isPlaying, setIsPlaying) });
         }
     }
 
-    function setSong(){
+    function setSong() {
         setCurrentSong({
             id: track.id,
             artist: artists,
@@ -50,10 +50,8 @@ export default function SongCard(props) {
             titleUrl: track.external_urls.spotify, //song page
             albumUrl: track.external_urls.spotify, //album page
         });
-        setTimeout(() => {  console.log(`Now playing ${songTitle} at ${playUrl}`); }, 300);
+        setTimeout(() => { console.log(`Now playing ${songTitle} at ${playUrl}`); }, 300);
     }
-    console.log('track')
-    console.log(track)
 
     return (
         <li className='uk-margin-remove-top'>
@@ -62,7 +60,7 @@ export default function SongCard(props) {
                     <div className='switching-icons'>
                         <i className='fal fa-music-alt'></i>
                         <a type='button' onClick={playSong} >
-                           <i className='fal fa-play-circle'></i>
+                            <i className='fal fa-play-circle'></i>
                         </a>
                         <i className='fal fa-volume'></i>
                     </div>
