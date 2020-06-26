@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import axiosWithAuth from "axios";
-
+import {server} from '../utils/tools'
 import {useRecoilState} from 'recoil'
 import {credentialsState} from '../store/states'
 
 export default function Profile() {
     const [credentials, setCredentials] = useRecoilState(credentialsState);
-    //const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const history = useHistory();
 
@@ -16,30 +14,22 @@ export default function Profile() {
 
     const confirm = (e) => {
         e.preventDefault();
-        let id = localStorage.getItem('userID');
-        //axiosWithAuth()
         axios
-            .put( `https://spotify-suggestions-backend.herokuapp.com/api/user/${id}`, credentials)
+            .put( `${server.base}/api/user/${server.id}`, credentials)
             .then( (res) => console.log(res) )
             .catch( (err) => console.log(err) )
     };
 
     useEffect(() => {
-        let id = localStorage.getItem('userID');
-        console.log(`/api/user/${id}`);
-        //axiosWithAuth()
         axios
-            .get( `https://spotify-suggestions-backend.herokuapp.com/api/user/${id}` )
+            .get( `${server.base}/api/user/${server.id}` )
             .then( (res) => {
                 if (res.data.phoneNumber){setCredentials({phoneNumber: res.data.phoneNumber})}
                 if (res.data.username){setCredentials({username: res.data.username })}
             })
             .catch( (err) => console.log(err) )
-    }, []);
+    }, [setCredentials]);
     
-
-    
-
     return (
         
         <section className='uk-section'>

@@ -2,7 +2,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import RecommendedList from './RecommendedList.js';
-import { axiosWithAuth } from '../utils/axiosWithAuth'
+import axios from 'axios'
+import {server} from '../utils/tools'
 
 import { useRecoilState } from 'recoil'
 import { currentSongState, isPlayingState } from '../store/states'
@@ -10,13 +11,13 @@ import { currentSongState, isPlayingState } from '../store/states'
 export default function Playing() {
     const currentSong = useRecoilState(currentSongState)
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
+    const [suggestions, setSuggestions ]= useState([])
 
     //when Playing component loads make authenticated request for suggestions songs
     useEffect(() => {
-        console.log(localStorage.userID)
-        axiosWithAuth()
-            .get(`/api/user/${localStorage.userID}/suggestions`)
-            .then((res) => console.log(res)/*setSuggestions(res.data)*/)
+        axios
+            .get(`${server.base}/api/user/${server.id}/suggestions/${currentSong[0].id}`)
+            .then((res) => {console.log(res); console.log('RIGHT HERE'); setSuggestions(res.data)})
             .catch((err) => console.log(err))
     }, []);
 
@@ -24,6 +25,15 @@ export default function Playing() {
         console.log(e)
         e.preventDefault();
         console.log('this song is now a favorite')
+
+        let userID = localStorage.userID
+        console.log(localStorage.userID)
+        console.log('hello')
+        axios
+            .get(`http://localhost:5000/api/user/${userID}/like/${currentSongState.id}`)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
+                  
     }
 
     return (
@@ -37,8 +47,6 @@ export default function Playing() {
                             alt='Album Cover'
                             src={currentSong[0].artMedium}
                         />
-                        {/* Added the state for the source image but it is rendering too small? Maybe we can fix it with styling? */}
-                        {/* The size only gets messed up after changing songs with the new src code  */}
                         <nav className='song-nav'>
                             <div className='song-nav-bg nav-toggle'></div>
                             <a className='menu-toggler nav-toggle' uk-toggle='target: .nav-toggle; cls: toggled-open'>
@@ -79,7 +87,7 @@ export default function Playing() {
                         </div>
                     </div>
                 </div>
-                <RecommendedList />
+                <RecommendedList data={suggestions}/>
             </div>
         </div>
     )
