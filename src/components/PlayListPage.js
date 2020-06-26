@@ -3,33 +3,24 @@ import PlayListPageCard from './PlayListPageCard.js';
 
 export default function PlayListPage(props) {
     const songs = props.playlist.data.items;
-    console.log('props', props);
-    console.log('songs', songs);
+    // console.log('props', props);
+    // console.log('songs', songs);
 
-    //const track = props.song.track;
-
-    // const artistsList = track.artists;
-    // const artistsNames = []
-    // for (let i = 0; i < artistsList.length; i++) {
-    //     artistsNames.push(artistsList[i].name);
-    // }
-    // const artists = artistsNames.join();
-    // const albumTitle = track.album.name;
-    // const songTitle = track.name;
-    // const songDuration = (0 + (track.duration_ms / 100000).toFixed(2).toString().replace('.', ':')).slice(-5);
-    // const albumCover = track.album.images[2].url;
-    // const albumCoverMedium = track.album.images[1].url;
-    // const playUrl = track.preview_url;
+    // const playlistCover = props.playlist.images[0].url;
+    // const playlistTitle = props.playlist.name;
+    // const playlistDescription = props.playlist.description;
+    // const playlistBy = props.playlist.owner.display_name;
+    // const playlistId = props.playlist.id;
 
     return (
-        <section className='uk-section'>
+        <section id='favorites' className='uk-section song-list'>
 
             <div className='uk-container uk-margin-large-bottom'>
                 <div className='uk-margin-large-bottom'>
-                    {/* <img className='uk-margin-right' src={albumCover} width="200" height="200" alt='Album Cover' />
+                    {/* <img className='uk-margin-right' src={playlistCover} width="200" height="200" alt='Album Cover' />
                     <span className='uk-inline'>
-                        <h1 className='uk-block uk-text-primary uk-margin-remove'>{albumTitle}</h1>
-                        <h3 className='uk-block uk-text-left'>{albumArtist}</h3>
+                        <h1 className='uk-block uk-text-primary uk-margin-remove'>{playlistTitle}</h1>
+                        <h3 className='uk-block uk-text-left'>By  {playlistBy}</h3>
                     </span> */}
                 </div>
 

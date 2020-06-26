@@ -1,13 +1,62 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+#favorites li .switching-icons>,
+.song-list li .switching-icons> {
+  font-size: 24px;
+  display: inline-block;
+  min-width: 50px !important;
+  max-width: 50px !important;
+}
+
+#favorites li .switching-icons>.fa-play-circle,
+.song-list li .switching-icons>.fa-play-circle,
+#favorites li .switching-icons>.fa-volume,
+.song-list li .switching-icons>.fa-volume {
+  display: none;
+}
+
+#favorites li:hover,
+.song-list li:hover {
+  background: #243049;
+}
+
+#favorites li:hover .fa-music-alt,
+.song-list li:hover .fa-music-alt {
+  display: none;
+}
+
+#favorites li:hover .fa-play-circle,
+.song-list li:hover .fa-play-circle {
+  display: inline-block;
+  color: #b1bbc1;
+}
+
+#favorites li:hover .fa-play-circle:hover,
+.song-list li:hover .fa-play-circle:hover {
+  color: #ff1744;
+}
+
+#favorites li.uk-active .fa-music-alt,
+.song-list li.uk-active .fa-music-alt {
+  display: none;
+}
+
+#favorites li.uk-active .fa-volume,
+.song-list li.uk-active .fa-volume {
+  display: inline-block;
+  color: #ff1744;
+}
+
+#favorites li.uk-active:hover .fa-play-circle,
+.song-list li.uk-active:hover .fa-play-circle {
+  display: none;
 }
