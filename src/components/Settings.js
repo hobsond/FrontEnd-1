@@ -9,7 +9,6 @@ export default function Settings() {
     const confirm = (e) => {
         e.preventDefault();
         let id = localStorage.getItem('userID');
-        //axiosWithAuth()
         axios
             .delete( `https://spotify-suggestions-backend.herokuapp.com/api/user/${id}`)
             .then( (res) => console.log('Bon Voyage',res) )

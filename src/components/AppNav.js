@@ -20,7 +20,6 @@ export default function AppNav() {
     useEffect(() => {
         let id = localStorage.getItem('userID');
         console.log(`/api/user/${id}`);
-        //axiosWithAuth()
         axios
             .get(`https://spotify-suggestions-backend.herokuapp.com/api/user/${id}`)
             .then((res) => {
