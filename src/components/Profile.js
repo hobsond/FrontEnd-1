@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import axiosWithAuth from "axios";
 
-import {useRecoilState} from 'recoil'
-import {credentialsState} from '../store/states'
+import { useRecoilState } from 'recoil'
+import { credentialsState } from '../store/states'
 
 export default function Profile() {
     const [credentials, setCredentials] = useRecoilState(credentialsState);
@@ -19,9 +19,9 @@ export default function Profile() {
         let id = localStorage.getItem('userID');
         //axiosWithAuth()
         axios
-            .put( `https://spotify-suggestions-backend.herokuapp.com/api/user/${id}`, credentials)
-            .then( (res) => console.log(res) )
-            .catch( (err) => console.log(err) )
+            .put(`https://spotify-suggestions-backend.herokuapp.com/api/user/${id}`, credentials)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
     };
 
     useEffect(() => {
@@ -29,24 +29,25 @@ export default function Profile() {
         console.log(`/api/user/${id}`);
         //axiosWithAuth()
         axios
-            .get( `https://spotify-suggestions-backend.herokuapp.com/api/user/${id}` )
-            .then( (res) => {
-                if (res.data.phoneNumber){setCredentials({phoneNumber: res.data.phoneNumber})}
-                if (res.data.username){setCredentials({username: res.data.username })}
+            .get(`https://spotify-suggestions-backend.herokuapp.com/api/user/${id}`)
+            .then((res) => {
+                if (res.data.phoneNumber) { setCredentials({ phoneNumber: res.data.phoneNumber }) }
+                if (res.data.username) { setCredentials({ username: res.data.username }) }
             })
-            .catch( (err) => console.log(err) )
+            .catch((err) => console.log(err))
     }, []);
-    
 
-    
+
+
 
     return (
-        
+
         <section className='uk-section'>
             <div className='uk-container uk-container-small uk-text-center'>
+                <h1 className='uk-text-primary'>Profile</h1>
                 <form id='signInForm' onSubmit={confirm}>
-                    <fieldset className='uk-fieldset uk-width-1-2@xl uk-margin-auto'>
-                    <label className='uk-form-label' htmlFor='profile-username'>Username</label>
+                    <fieldset className='uk-fieldset uk-width1-1 uk-margin-auto'>
+                        <label className='uk-form-label' htmlFor='profile-username'>Username</label>
                         <div className='uk-margin'>
                             <div className='uk-inline'>
                                 <span className="uk-form-icon" uk-icon="icon: user"></span>
@@ -61,7 +62,7 @@ export default function Profile() {
                                 <div className='uk-text-danger'>
                                     {error.username && <small> {error.username} </small>}
                                 </div>
-                            </div>    
+                            </div>
                         </div>
                         <label className='uk-form-label' htmlFor='profile-username'>Phone Number</label>
                         <div className='uk-margin'>
@@ -80,9 +81,11 @@ export default function Profile() {
                             </div>
                         </div>
                         <div className='uk-margin'>
-                            <button className='uk-width-1-1 uk-button uk-button-primary' >
+
+                            <button className='uk-margin-top uk-button uk-button-primary' style={{ width: '219px' }}>
                                 Confirm
                             </button>
+
                         </div>
 
                     </fieldset>

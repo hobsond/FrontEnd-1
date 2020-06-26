@@ -4,17 +4,18 @@ import axios from 'axios';
 import AppMenu from './AppMenu.js';
 import { Link } from 'react-router-dom';
 
-import {milliToMin} from '../utils/tools'
-import {useRecoilState} from 'recoil'
-import {currentSongState, isPlayingState, credentialsState} from '../store/states'
-import {toggleAudio} from '../utils/tools'
+import { milliToMin } from '../utils/tools'
+import { useRecoilState } from 'recoil'
+import { currentSongState, isPlayingState, credentialsState } from '../store/states'
+import { toggleAudio } from '../utils/tools'
 
 
 
 export default function AppNav() {
-    const [credentials, setCredentials] = useRecoilState(credentialsState)
-    const currentSong = useRecoilState(currentSongState)
-    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
+    const [credentials, setCredentials] = useRecoilState(credentialsState);
+    const currentSong = useRecoilState(currentSongState);
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+    const [currentTime, setCurrentTime] = useState('0:00');
 
     useEffect(() => {
         let id = localStorage.getItem('userID');
@@ -68,7 +69,7 @@ export default function AppNav() {
                             <a id='playButton' onClick={() => toggleAudio(isPlaying, setIsPlaying)} className={isPlaying ? 'uk-hidden' : ''}><i className='fal fa-play fa-2x'></i></a>
                         </li>
                         <li>
-                            <a id='pauseButton' onClick={()=> toggleAudio(isPlaying, setIsPlaying)} className={!isPlaying ? 'uk-hidden' : ''}><i className='fal fa-pause fa-2x'></i></a>
+                            <a id='pauseButton' onClick={() => toggleAudio(isPlaying, setIsPlaying)} className={!isPlaying ? 'uk-hidden' : ''}><i className='fal fa-pause fa-2x'></i></a>
                         </li>
                         <li>
                             <a><i className='fal fa-forward'></i></a></li>
@@ -77,7 +78,7 @@ export default function AppNav() {
                         </li>
                         <li className='uk-visible@m'>
                             <a className='time'>
-                                <span id='audioPassedTime'>0:00</span>
+                                <span id='audioPassedTime'>{currentTime}</span>
                                 <span className='divider'>&nbsp; / &nbsp;</span>
                                 <span id='audioDurationTime'>{milliToMin(currentSong[0].duration)}</span>
                             </a>
