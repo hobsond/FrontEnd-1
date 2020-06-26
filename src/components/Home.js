@@ -84,6 +84,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
+
                     <div className='uk-width-3-5@s'>
                         <div className='uk-card uk-card-secondary'>
                             <div className='uk-card-body'>
@@ -200,6 +201,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
+
                     <div className='uk-width-2-5@s uk-margin-top'>
                         <div className='uk-card uk-card-secondary'>
                             <div className='uk-card-body'>
