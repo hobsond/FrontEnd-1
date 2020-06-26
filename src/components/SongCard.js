@@ -2,10 +2,10 @@ import React from 'react';
 
 import { useRecoilState } from 'recoil'
 import { currentSongState, isPlayingState } from '../store/states'
-import { toggleAudio, milliToMin, sleep } from '../utils/tools'
+import { toggleAudio, sleep } from '../utils/tools'
 
 export default function SongCard(props) {
-    //declare variables
+    console.log('props '+ props)
     const track = props.song.track;
     const artistsList = track.artists;
     const artistsNames = []
@@ -15,16 +15,14 @@ export default function SongCard(props) {
     const artists = artistsNames.join();
     const albumTitle = track.album.name;
     const songTitle = track.name;
-    const songDuration = milliToMin(track.duration_ms)
+    const songDuration = (0 + (track.duration_ms / 100000).toFixed(2).toString().replace('.', ':')).slice(-5);
     const albumCover = track.album.images[2].url;
     const albumCoverMedium = track.album.images[1].url;
     const playUrl = track.preview_url
 
-    //import state
     const [currentSong, setCurrentSong] = useRecoilState(currentSongState)
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
 
-    //functions
     async function playSong() {
         if (isPlaying === true) {
             toggleAudio(isPlaying, setIsPlaying);

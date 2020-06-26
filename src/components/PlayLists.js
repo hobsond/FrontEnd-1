@@ -11,6 +11,7 @@ export default function PlayLists(props) {
                 <h1 className='uk-text-center uk-text-primary uk-margin-large-bottom'>Play Lists</h1>
                 <div className='uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-text-center uk-grid'
                     data-uk-grid='parallax: 150; masonry: true'>
+
                     {
                         playlists.map(playlist => {
                             return (

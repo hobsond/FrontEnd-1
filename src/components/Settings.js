@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import {server} from '../utils/tools'
-
+import axiosWithAuth from "axios";
 
 export default function Settings() {
     let history = useHistory();
 
     const confirm = (e) => {
         e.preventDefault();
+        let id = localStorage.getItem('userID');
+        //axiosWithAuth()
         axios
-            .delete( `${server.base}/api/user/${server.id}`)
+            .delete( `https://spotify-suggestions-backend.herokuapp.com/api/user/${id}`)
             .then( (res) => console.log('Bon Voyage',res) )
             .catch( (err) => console.log(err) )
+
         history.push('/')
     };
+
+    
 
     return (
         

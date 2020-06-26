@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 
@@ -25,8 +25,6 @@ import {
   dummyPlaylistById,
   dummyPlaylistTracks
 } from './utils/dummyData.js';
-import { axiosWithAuth } from './utils/axiosWithAuth';
-import axios from 'axios';
 
 export default function App() {
 
@@ -42,18 +40,6 @@ export default function App() {
   const [albums, setAlbums] = useState();
   const [user, setUser] = useState();
 
-  useEffect(()=> {
-    axios
-    .post( `https://bw3-ds.herokuapp.com/predict_all`, {"trackid" : "3RjtoLl66MHWOOlV0w0g9s"})
-    .then( (res) => console.log(res) )
-    .catch( (err) => console.log(err) )
-    
-    axios
-      .post( `https://bw3-ds.herokuapp.com/track`, {"trackid" : "3RjtoLl66MHWOOlV0w0g9s"})
-      .then( (res) => console.log(res) )
-      .catch( (err) => console.log(err) )
-    
-  }, []);
   return (
     <RecoilRoot>
       <div className='App'>

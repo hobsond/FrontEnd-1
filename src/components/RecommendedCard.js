@@ -1,6 +1,5 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import {milliToMin} from '../utils/tools'
 
 export default function RecommendedCard(props) {
     const chartData = [
@@ -37,23 +36,23 @@ export default function RecommendedCard(props) {
         <li className='uk-margin-remove-top'>
             <div className='uk-padding-small uk-grid-medium uk-grid'>
                 <div className='uk-width-auto'>
-                    <img className='uk-comment-avatar' src={data.art}
+                    <img className='uk-comment-avatar' src='images/album-cover.jpg'
                         width='50' height='50' alt='' />
                     {/* Source of this image needs to be replaced with album cover of song being recommended */}
                 </div>
                 <div className='uk-width-expand'>
                     <h4 className='uk-comment-title uk-margin-remove'>
-                        <a className='uk-link-reset' href='#'>{data.title}</a>
+                        <a className='uk-link-reset' href='#'>Song Title</a>
                     </h4>
-                    <small className=' uk-float-right'>{milliToMin(data.duration)}</small>
+                    <small className=' uk-float-right'>02:39</small>
                     {/* Song Duration to go here */}
                     <p className='uk-comment-meta uk-margin-remove-top'>
                         <i className='fal fa-user-music'></i>
-                        <a className='uk-link-reset uk-margin-small-left' href='#'>{data.artists}</a>
+                        <a className='uk-link-reset uk-margin-small-left' href='#'>Artist Name</a>
                         {/* Artist Name to go here */}
                         <span className='uk-padding-small'>|</span>
                         <i className='fal fa-album'></i>
-                        <a className='uk-link-reset uk-margin-small-left' href='#'>{data.album}</a>
+                        <a className='uk-link-reset uk-margin-small-left' href='#'>Album Title</a>
                         {/* Album Title to go here */}
                     </p>
                     <div className='uk-height-small'>

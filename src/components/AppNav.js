@@ -4,11 +4,10 @@ import axios from 'axios';
 import AppMenu from './AppMenu.js';
 import { Link } from 'react-router-dom';
 
-
 import {milliToMin} from '../utils/tools'
 import {useRecoilState} from 'recoil'
 import {currentSongState, isPlayingState, credentialsState} from '../store/states'
-import {toggleAudio, server} from '../utils/tools'
+import {toggleAudio} from '../utils/tools'
 
 
 
@@ -18,14 +17,17 @@ export default function AppNav() {
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
 
     useEffect(() => {
+        let id = localStorage.getItem('userID');
+        console.log(`/api/user/${id}`);
+        //axiosWithAuth()
         axios
-            .get(`${server.base}/api/user/${localStorage.getItem('userID')}`)
+            .get(`https://spotify-suggestions-backend.herokuapp.com/api/user/${id}`)
             .then((res) => {
                 if (res.data.phoneNumber) { setCredentials({ phoneNumber: res.data.phoneNumber }) }
                 if (res.data.username) { setCredentials({ username: res.data.username }) }
             })
             .catch((err) => console.log(err))
-    }, [setCredentials]);
+    }, []);
 
     return (
         <div className='uk-background-secondary'>

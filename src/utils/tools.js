@@ -18,17 +18,3 @@ export function sleep(ms) {
 console.log("Hello");
 sleep(2000).then(() => { console.log("World!"); });
 */
-
-
-
-
-
-// this controls if the server is live or local
-// uncomment whichever you want to use
-
-// local server
-//export const server = { base:'http://localhost:5000', id: '3' } // local backend
-
-// live server
-export const server = { base:'https://spotify-suggestions-backend.herokuapp.com', id: localStorage.getItem('userID') } 
-

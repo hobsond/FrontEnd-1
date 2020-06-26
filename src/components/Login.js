@@ -5,10 +5,11 @@ import signInSchema from '../validation/signInSchema.js';
 import signUpSchema from '../validation/signUpSchema.js';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
-import {server} from '../utils/tools'
 
 import * as Yup from "yup";
 import { isCompositeComponent } from 'react-dom/test-utils';
+
+
 
 const initialSignInFormValues = {
     signInEmail: '',
@@ -61,19 +62,21 @@ export default function Login() {
             [name]: value,
         })
     };
-
     const signInOnSubmit = evt => {
         evt.preventDefault()
 
         const signInUser = {
-
+            // antony's backend
+            //username: signInFormValues.signInEmail.trim(),
             email: signInFormValues.signInEmail.trim(),
             password: signInFormValues.signInPassword.trim(),
         };
         console.log('signin', signInUser)
 
         axios
-            .post(`${server.base}/auth/login`, signInUser)
+            // antony's backend
+            //.post("https://spotify-api-prod.herokuapp.com/auth/login", signInUser)
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", signInUser)
             .then((res) => {
                 console.log(res);
                 localStorage.setItem("userID", res.data.id);
@@ -88,15 +91,7 @@ export default function Login() {
         })
     }, [signInFormValues])
 
-    useEffect(() => {
-        signUpSchema.isValid(signUpFormValues).then(valid => {
-            setDisabled(!valid)
-        })
-    }, [signUpFormValues])
 
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     const signUpOnInputChange = evt => {
         const { name, value } = evt.target
         Yup
@@ -127,16 +122,25 @@ export default function Login() {
 
     const signUpOnSubmit = evt => {
         evt.preventDefault()
+        console.log('click')
 
         const signUpUser = {
             email: signUpFormValues.signUpEmail.trim(),
             password: signUpFormValues.signUpPassword.trim(),
+
+            /* antony's backend
+            username: signUpFormValues.signUpEmail.trim(),
+            password: signUpFormValues.signUpPassword.trim(),
+            email: 'fakeEmail93@gmail.com',
+            */
         };
 
         console.log('signup', signUpUser)
 
         axios
-            .post(`${server.base}/auth/signup`, signUpUser)
+            // antonys backend
+            //.post("https://spotify-api-prod.herokuapp.com/auth/register", signUpUser)
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", signUpUser)
             .then((res) => {
                 console.log(res);
                 localStorage.setItem("userID", res.data.id);
@@ -146,6 +150,11 @@ export default function Login() {
             })
             .catch((err) => console.log(err));
     };
+    useEffect(() => {
+        signUpSchema.isValid(signUpFormValues).then(valid => {
+            setDisabled(!valid)
+        })
+    }, [signUpFormValues])
 
     return (
         <div className='uk-grid-collapse uk-child-width-1-2@s uk-flex-middle uk-grid'>
