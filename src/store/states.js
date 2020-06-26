@@ -3,7 +3,7 @@ import {atom} from 'recoil'
 const currentSongState = atom({
     key: "currentSong",
     default: {
-        id: '0H39MdGGX6dbnnQPt6NQkZ',
+        id: '1xQ6trAsedVPCdbtDAmk0c',
         artist: 'Still Woozy',
         title: 'Window',
         album: 'Window',

@@ -11,31 +11,21 @@ import { currentSongState, isPlayingState } from '../store/states'
 export default function Playing() {
     const currentSong = useRecoilState(currentSongState)
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
-    const pack = []
-    let [predict, setPredict] = useState([]);
-    const [predictTrack, setPredictTrack] = useState(pack);
+    const [pack, setPack] = useState([])
+    //let [predict, setPredict] = useState([]);
+
+
     
     //when Playing component loads make authenticated request for suggestions songs
     //console.log('hello my dude')
     //console.log(currentSong[0].id.toString())
     useEffect(() => {
         axios
-        .post( `https://bw3-ds.herokuapp.com/predict_all`, {"trackid" : "7fPuWrlpwDcHm5aHCH5D9t"})
-        .then( (res) => {
-            //console.log(res.data);
-            setPredict(res.data)
-            res.data.map(item => { //console.log(item.track_id)
-                axios
-                    .post( `https://bw3-ds.herokuapp.com/track`, {"trackid" : item.track_id})
-                    .then( (res) => {
-                        pack.push(res.data)
-                        //console.log(res.data); 
-                        setPredictTrack(pack)
-                        })
-                    .catch( (err) => console.log(err) )            
-            });
-           
-        } )
+
+        .post( `https://bw3-ds.herokuapp.com/predict_all`, {"trackid" : currentSong[0].id})
+        .then( (res) => setPack(res.data) )
+
+        
         .catch( (err) => console.log(err) )
         
     }, []);
@@ -103,7 +93,9 @@ export default function Playing() {
                         </div>
                     </div>
                 </div>
-                <RecommendedList predictTrack={predictTrack} predict={predict} />
+
+                <RecommendedList pack={pack} />
+
             </div>
         </div>
     )
