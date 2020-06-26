@@ -2,6 +2,51 @@
 // dummyPlaylistById 
 // dummyPlaylistTracks 
 // dummyFavorites
+//
+export const dummyPopular =[
+    {
+        id: "7fPuWrlpwDcHm5aHCH5D9t",
+        artist: "SAINt JHN & Imanbek",
+        title: "Roses - Imanbek Remix",
+        album: "Roses (Imanbek Remix)",
+        art: "https://i.scdn.co/image/ab67616d00004851d764a9be63a497a9de09b146",
+        artMedium: "https://i.scdn.co/image/ab67616d00001e02d764a9be63a497a9de09b146",
+        audio: 'https://p.scdn.co/mp3-preview/78f447a8a33bba40e7aef48c8551e12a9aa3df75?cid=aa3e02035a4f453c93981f45de1b36e2',
+        duration: '176218',
+        uri: "spotify:track:7fPuWrlpwDcHm5aHCH5D9t",
+        artistUrl: "https://open.spotify.com/track/7fPuWrlpwDcHm5aHCH5D9t", //artist page
+        titleUrl: "https://open.spotify.com/track/7fPuWrlpwDcHm5aHCH5D9t", //song page
+        albumUrl: "https://open.spotify.com/track/7fPuWrlpwDcHm5aHCH5D9t", //album page
+    },
+    {
+        id: "1xQ6trAsedVPCdbtDAmk0c",
+        artist: "Jawsh 685 & Jason Derulo",
+        title: "Savage Love (Laxed - Siren Beat)",
+        album: "Savage Love (Laxed - Siren Beat)",
+        art:"https://i.scdn.co/image/ab67616d0000b273e3eb3b8feeafb746ecf659e7",
+        artMedium: "https://i.scdn.co/image/ab67616d0000b273e3eb3b8feeafb746ecf659e7",
+        audio: "https://p.scdn.co/mp3-preview/d709526bcdffa6683f85c9255c2fd4e7871ba04c?cid=aa3e02035a4f453c93981f45de1b36e2",
+        duration: '171374',
+        uri: "spotify:track:1xQ6trAsedVPCdbtDAmk0c",
+        artistUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c",
+        titleUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c", //song page
+        albumUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c" //album page
+    },
+    {
+        id: "1xQ6trAsedVPCdbtDAmk0c",
+        artist: "Jawsh 685 & Jason Derulo",
+        title: "Savage Love (Laxed - Siren Beat)",
+        album: "Savage Love (Laxed - Siren Beat)",
+        art:"https://i.scdn.co/image/ab67616d0000b273e3eb3b8feeafb746ecf659e7",
+        artMedium: "https://i.scdn.co/image/ab67616d0000b273e3eb3b8feeafb746ecf659e7",
+        audio: "https://p.scdn.co/mp3-preview/d709526bcdffa6683f85c9255c2fd4e7871ba04c?cid=aa3e02035a4f453c93981f45de1b36e2",
+        duration: '171374',
+        uri: "spotify:track:1xQ6trAsedVPCdbtDAmk0c",
+        artistUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c",
+        titleUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c", //song page
+        albumUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c" //album page
+    },
+]
 
 export const dummyPlaylists = {
     "data": {

@@ -5,31 +5,23 @@ import { currentSongState, isPlayingState } from '../store/states'
 import { toggleAudio, sleep, milliToMin } from '../utils/tools'
 
 export default function SongCard(props) {
+    //import state
+    const [currentSong, setCurrentSong] = useRecoilState(currentSongState)
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
+
+    // declare variables
+    let history = useHistory();
     const artistsNames = []
     for (let i = 0; i < props.song.artists.length; i++) {
         artistsNames.push(props.song.artists[i].name);
     }
-    /*
-    const track = props.song.track;
-    const artistsList = track.artists;
-    const artists = artistsNames.join();
-    const albumTitle = track.album.name;
-    const songTitle = track.name;
-    const songDuration = (0 + (track.duration_ms / 100000).toFixed(2).toString().replace('.', ':')).slice(-5);
-    const albumCover = track.album.images[2].url;
-    const albumCoverMedium = track.album.images[1].url;
-    const playUrl = track.preview_url
-    */
-    const [currentSong, setCurrentSong] = useRecoilState(currentSongState)
-    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
-    console.log(props)
 
+    //functions
     async function playSong() {
         if (isPlaying === true) {
             toggleAudio(isPlaying, setIsPlaying);
             setSong();
             toggleAudio(isPlaying, setIsPlaying)
-            //await sleep(500).then(() => { toggleAudio(isPlaying, setIsPlaying) });
         }
         else {
             setSong();
@@ -62,9 +54,7 @@ export default function SongCard(props) {
         history.push('/playing')
     }
 
-    console.log('track')
-    /*console.log(track)*/
-    let history = useHistory();
+    //jsx
     return (
         <li className='uk-margin-remove-top song-track' >
             <div className='uk-padding-small uk-grid-medium uk-flex-middle' data-uk-grid>

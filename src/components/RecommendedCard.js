@@ -12,9 +12,25 @@ export default function RecommendedCard(props) {
             liveness: `${props.song.liveness}`,
             loudness: `${props.song.loudness}`,
             tempo: `${props.song.tempo}`,
-            valence: `${props.song.valence}`
+            valence: `${props.song.valence}`,
+            //sum: `${props.song.sum}`,
         }
     ];
+
+    const data = {
+        id: props.song.id,
+        artists: props.song.artist,
+        title: props.song.name,
+        album: props.song.album,
+        albumId: props.album_id,
+        art: props.song.album_url,
+        audio: props.song.preview_url,
+        duration: props.song.duration,
+        //uri: props.song. ,
+        artistUrl: props.song.external_url, //artist page
+        titleUrl: props.song.external_url, //song page
+        albumUrl: props.song.external_url, 
+    }
 
     return (
         <li className='uk-margin-remove-top'>
