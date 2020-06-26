@@ -40,7 +40,6 @@ export default function App() {
   const [albums, setAlbums] = useState();
   const [user, setUser] = useState();
 
-
   return (
     <RecoilRoot>
       <div className='App'>
@@ -64,9 +63,6 @@ export default function App() {
               <PrivateRoute path='/playlists' playlists={dataPlaylists} component={PlayLists} />
               <PrivateRoute path='/albumID123456789' component={AlbumPage} />
               <PrivateRoute path='/' component={Home} />
-              <PrivateRoute path='/home' component={Home} />
-
-
 
               <PlayQueue />
               <footer className="app-footer">
