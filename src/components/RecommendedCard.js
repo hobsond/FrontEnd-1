@@ -1,11 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useLayoutEffect} from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import axios from 'axios'
 import {milliToMin} from '../utils/tools'
 
-export default function RecommendedCard(props) {
+import { useRecoilState } from 'recoil'
+import { dataState } from '../store/states'
+import AlbumPage from './AlbumPage';
 
-    const [data, setData] = useState({})
+export default function RecommendedCard(props) {
+    const [data, setData] = useState(
+        {
+            name: 'loading',
+            artists:[{name:'loading'}],
+            album:{ 
+                images:[{url: 'https://i.scdn.co/image/ab67616d0000b273e3eb3b8feeafb746ecf659e7'}],
+                name: 'loading',
+                },
+            duration_ms:0,
+            id:null,
+            preview_url:null,
+        }
+    )
+
     //let data = {};
     //console.log('hi')
     //console.log(props)
@@ -31,22 +47,34 @@ export default function RecommendedCard(props) {
             //sum: `${props.song.sum}`,
         }
     ];
-    
+    console.log(props.song);
+    console.log('cool')
 
-    console.log(data)
 
-         
 //console.log(data)
     
+    useLayoutEffect(() => {
+
+    axios
+    .post( `https://bw3-ds.herokuapp.com/track`, {"trackid" : props.song.track_id})
+    .then( (res) =>  setData(res.data)
+    )
+    .catch( (err) => console.log(err) )
+    
+    }, [setData]);
+
+    console.log(document.pleaseGod)
 
 
-    /*useEffect(() => {
+    /*
+    useEffect(() => {
+        axios
+            .post( `https://bw3-ds.herokuapp.com/track`, {"trackid" : props.song.track_id})
+            .then( (res) => {console.log(res.data); console.log('hello')} )
+            .catch( (err) => console.log(err) )
+    }, []);
+    
 
-
-        
-    }, []);*/
-
-    console.log(data)
     //const name = data.name
     
     /*const data = {
@@ -64,27 +92,28 @@ export default function RecommendedCard(props) {
         albumUrl: props.song.external_url, 
     }*/
 
+
     return (
         <li className='uk-margin-remove-top'>
             <div className='uk-padding-small uk-grid-medium uk-grid'>
                 <div className='uk-width-auto'>
-                    <img className='uk-comment-avatar' src={data.art}
+                    <img className='uk-comment-avatar' src={data.album.images[0].url}
                         width='50' height='50' alt='' />
                     {/* Source of this image needs to be replaced with album cover of song being recommended */}
                 </div>
                 <div className='uk-width-expand'>
                     <h4 className='uk-comment-title uk-margin-remove'>
-                        <a className='uk-link-reset' href='#'>{data.title}</a>
+                        <a className='uk-link-reset' href='#'>{data.name}</a>
                     </h4>
-                    <small className=' uk-float-right'>{milliToMin(data.duration)}</small>
+                    <small className=' uk-float-right'>{milliToMin(data.duration_ms)}</small>
                     {/* Song Duration to go here */}
                     <p className='uk-comment-meta uk-margin-remove-top'>
                         <i className='fal fa-user-music'></i>
-                        <a className='uk-link-reset uk-margin-small-left' href='#'>{data.artists}</a>
+                        <a className='uk-link-reset uk-margin-small-left' href='#'>{data.artists[0].name}</a>
                         {/* Artist Name to go here */}
                         <span className='uk-padding-small'>|</span>
                         <i className='fal fa-album'></i>
-                        <a className='uk-link-reset uk-margin-small-left' href='#'>{data.album}</a>
+                        <a className='uk-link-reset uk-margin-small-left' href='#'>{data.album.name}</a>
                         {/* Album Title to go here */}
                     </p>
                     <div className='uk-height-small'>
