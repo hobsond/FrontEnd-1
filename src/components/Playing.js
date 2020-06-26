@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import RecommendedList from './RecommendedList.js';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import  axios  from 'axios'
 
 import { useRecoilState } from 'recoil'
 import { currentSongState, isPlayingState } from '../store/states'
@@ -10,14 +11,33 @@ import { currentSongState, isPlayingState } from '../store/states'
 export default function Playing() {
     const currentSong = useRecoilState(currentSongState)
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
-
+    const pack = []
+    let [predict, setPredict] = useState([]);
+    const [predictTrack, setPredictTrack] = useState(pack);
+    
     //when Playing component loads make authenticated request for suggestions songs
+    //console.log('hello my dude')
+    //console.log(currentSong[0].id.toString())
     useEffect(() => {
-        console.log(localStorage.userID)
-        axiosWithAuth()
-            .get(`/api/user/${localStorage.userID}/suggestions`)
-            .then((res) => console.log(res)/*setSuggestions(res.data)*/)
-            .catch((err) => console.log(err))
+        axios
+        .post( `https://bw3-ds.herokuapp.com/predict_all`, {"trackid" : "7fPuWrlpwDcHm5aHCH5D9t"})
+        .then( (res) => {
+            //console.log(res.data);
+            setPredict(res.data)
+            res.data.map(item => { //console.log(item.track_id)
+                axios
+                    .post( `https://bw3-ds.herokuapp.com/track`, {"trackid" : item.track_id})
+                    .then( (res) => {
+                        pack.push(res.data)
+                        //console.log(res.data); 
+                        setPredictTrack(pack)
+                        })
+                    .catch( (err) => console.log(err) )            
+            });
+           
+        } )
+        .catch( (err) => console.log(err) )
+        
     }, []);
 
     function favorite(e){
@@ -25,7 +45,11 @@ export default function Playing() {
         e.preventDefault();
         console.log('this song is now a favorite')
     }
-
+    /*
+        console.log('the bag is secured')
+        console.log(predictTrack)
+        console.log(predict)
+    */
     return (
         <div id='song-playing' className='song-playing uk-container uk-margin-xlarge-bottom' >
             <div className='uk-grid uk-child-width-1-1'>
@@ -79,7 +103,7 @@ export default function Playing() {
                         </div>
                     </div>
                 </div>
-                <RecommendedList />
+                <RecommendedList predictTrack={predictTrack} predict={predict} />
             </div>
         </div>
     )

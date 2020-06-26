@@ -2,6 +2,9 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 
 export default function RecommendedCard(props) {
+    console.log('hi')
+    console.log(props)
+
     const chartData = [
         {
             id: `${props.song.track_id}`,
