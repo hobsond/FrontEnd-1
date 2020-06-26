@@ -30,21 +30,21 @@ export default function AppSearch() {
                 <div className="uk-modal-body" data-uk-overflow-auto>
                     <form className='uk-search uk-search-large'>
 
-                        <input 
-                        className='uk-search-input uk-text-center' 
-                        type='search' 
-                        placeholder='Search...'
-                        defaultValue={query}
-                        onChange={e => setQuerey(e.target.value)} />
-                        <button style={{display:'none'}} type='submit' onClick={onSearch}></button>
- 
+                        <input
+                            className='uk-search-input uk-text-center'
+                            type='search'
+                            placeholder='Search...'
+                            defaultValue={query}
+                            onChange={e => setQuerey(e.target.value)} />
+                        <button style={{ display: 'none' }} type='submit' onClick={onSearch}></button>
+
                     </form>
-                    <div>
+                    <div className='song-list'>
                         {/* map over SongCard here */}
                         {/* <AlbumsCard /> */}
                         {console.log(songList)}
                         {(songList !== []) ?
-                            <ul className='uk-list uk-list-divider'>
+                            <ul className='uk-list uk-list-divider song-list'>
                                 {
                                     songList.map(song => (
                                         song.preview_url
