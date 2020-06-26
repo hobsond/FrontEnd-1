@@ -31,7 +31,21 @@ export const dummyPopular =[
         artistUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c",
         titleUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c", //song page
         albumUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c" //album page
-    }
+    },
+    {
+        id: "1xQ6trAsedVPCdbtDAmk0c",
+        artist: "Jawsh 685 & Jason Derulo",
+        title: "Savage Love (Laxed - Siren Beat)",
+        album: "Savage Love (Laxed - Siren Beat)",
+        art:"https://i.scdn.co/image/ab67616d0000b273e3eb3b8feeafb746ecf659e7",
+        artMedium: "https://i.scdn.co/image/ab67616d0000b273e3eb3b8feeafb746ecf659e7",
+        audio: "https://p.scdn.co/mp3-preview/d709526bcdffa6683f85c9255c2fd4e7871ba04c?cid=aa3e02035a4f453c93981f45de1b36e2",
+        duration: '171374',
+        uri: "spotify:track:1xQ6trAsedVPCdbtDAmk0c",
+        artistUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c",
+        titleUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c", //song page
+        albumUrl: "https://open.spotify.com/track/1xQ6trAsedVPCdbtDAmk0c" //album page
+    },
 ]
 
 export const dummyPlaylists = {
