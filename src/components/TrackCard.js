@@ -1,8 +1,8 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom'
-import {useRecoilState} from 'recoil'
-import {currentSongState, isPlayingState} from '../store/states'
-import {toggleAudio, sleep, milliToMin} from '../utils/tools'
+import { useHistory } from 'react-router-dom'
+import { useRecoilState } from 'recoil'
+import { currentSongState, isPlayingState } from '../store/states'
+import { toggleAudio, sleep, milliToMin } from '../utils/tools'
 
 export default function SongCard(props) {
     const artistsNames = []
@@ -23,21 +23,21 @@ export default function SongCard(props) {
     const [currentSong, setCurrentSong] = useRecoilState(currentSongState)
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
     console.log(props)
-    
-    async function playSong(){
-        if (isPlaying === true){ 
+
+    async function playSong() {
+        if (isPlaying === true) {
             toggleAudio(isPlaying, setIsPlaying);
             setSong();
             toggleAudio(isPlaying, setIsPlaying)
             //await sleep(500).then(() => { toggleAudio(isPlaying, setIsPlaying) });
         }
-        else{
+        else {
             setSong();
             await sleep(500).then(() => { toggleAudio(isPlaying, setIsPlaying) });
         }
     }
-    
-    function setSong(){
+
+    function setSong() {
         setCurrentSong({
             id: props.song.id,
             artist: artistsNames,
@@ -52,27 +52,27 @@ export default function SongCard(props) {
             titleUrl: props.song.external_urls.spotify, //song page
             albumUrl: props.song.external_urls.spotify, //album page
         });
-        setTimeout(() => {  console.log(`Now playing ${props.song.name} at ${props.song.preview_url}`); }, 300); 
+        setTimeout(() => { console.log(`Now playing ${props.song.name} at ${props.song.preview_url}`); }, 300);
     }
 
-    function exitModal(){
+    function exitModal() {
         let modal = document.getElementById("search");
         modal.parentNode.removeChild(modal);
         playSong();
         history.push('/playing')
     }
-    
+
     console.log('track')
     /*console.log(track)*/
     let history = useHistory();
     return (
-        <li className='uk-margin-remove-top' >
+        <li className='uk-margin-remove-top song-track' >
             <div className='uk-padding-small uk-grid-medium uk-flex-middle' data-uk-grid>
                 <div className='uk-width-auto'>
-                    <div className='switching-icons'>
+                    <div className='switching-icons uk-inline uk-margin-right'>
                         <i className='fal fa-music-alt'></i>
                         <a type='button' onClick={playSong} >
-                           <i className='fal fa-play-circle'></i>
+                            <i className='fal fa-play-circle'></i>
                         </a>
                         <i className='fal fa-volume'></i>
                     </div>
@@ -81,17 +81,17 @@ export default function SongCard(props) {
                 </div>
                 <div className='uk-width-expand'>
                     <h4 className='uk-comment-title uk-margin-remove'>
-                        <a className='uk-link-reset'  onClick={e=> {e.preventDefault(); exitModal()}}>
+                        <a className='uk-link-reset' onClick={e => { e.preventDefault(); exitModal() }}>
                             {props.song.name}
                         </a>
                     </h4>
                     <small className=' uk-float-right'>{milliToMin(props.song.duration_ms)}</small>
                     <p className='uk-comment-meta uk-margin-remove-top'>
                         <i className='fal fa-user-music'></i>
-                        <a className='uk-link-reset uk-margin-small-left' onClick={e=> {e.preventDefault(); exitModal()}}>{props.song.artists[0].name}</a>
+                        <a className='uk-link-reset uk-margin-small-left' onClick={e => { e.preventDefault(); exitModal() }}>{props.song.artists[0].name}</a>
                         <span className='uk-padding-small'>|</span>
                         <i className='fal fa-album'></i>
-                        <a className='uk-link-reset uk-margin-small-left' onClick={e=> {e.preventDefault(); exitModal()}}>{props.song.album.name}</a>
+                        <a className='uk-link-reset uk-margin-small-left' onClick={e => { e.preventDefault(); exitModal() }}>{props.song.album.name}</a>
                     </p>
                 </div>
             </div>

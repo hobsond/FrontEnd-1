@@ -8,7 +8,7 @@ export default function AppMenu() {
             <div className='medium-circle circle'></div>
             <ul className='app-menu-list'>
                 <li>
-                    <Link className='top-icon-medium-circle' to={'/home'} data-uk-tooltip="Home">
+                    <Link className='top-icon-medium-circle' to={'/'} data-uk-tooltip="Home">
                         <i className='fal fa-home'></i>
                     </Link>
                 </li>
