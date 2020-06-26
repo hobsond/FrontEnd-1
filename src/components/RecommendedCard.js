@@ -8,13 +8,12 @@ import { dataState } from '../store/states'
 import AlbumPage from './AlbumPage';
 
 export default function RecommendedCard(props) {
-<<<<<<< HEAD
     const [data, setData] = useState(
         {
             name: 'loading',
             artists:[{name:'loading'}],
             album:{ 
-                images:[{url: 'urlplz'}],
+                images:[{url: 'https://i.scdn.co/image/ab67616d0000b273e3eb3b8feeafb746ecf659e7'}],
                 name: 'loading',
                 },
             duration_ms:0,
@@ -22,10 +21,7 @@ export default function RecommendedCard(props) {
             preview_url:null,
         }
     )
-=======
 
-    const [data, setData] = useState({})
->>>>>>> a71ab16dc84b5b2503cb7602c691ca14401f1e59
     //let data = {};
     //console.log('hi')
     //console.log(props)
