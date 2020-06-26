@@ -4,6 +4,7 @@ import axios from 'axios'
 import {milliToMin} from '../utils/tools'
 
 export default function RecommendedCard(props) {
+
     const [data, setData] = useState({})
     //let data = {};
     //console.log('hi')
@@ -15,6 +16,7 @@ export default function RecommendedCard(props) {
     .post( `https://bw3-ds.herokuapp.com/track`, {"trackid" : props.song.track_id} )
     .then( (res) => {res.data})
     .catch( (err) => console.log(err) )*/
+
     const chartData = [
         {
             id: `${props.song.track_id}`,
