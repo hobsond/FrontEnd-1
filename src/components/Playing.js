@@ -68,14 +68,14 @@ export default function Playing() {
                         </nav>
                     </div>
                     <div className='uk-text-center uk-margin-top'>
-                        <h1 className='uk-text-primary'>Song Title</h1>
+                        <h1 className='uk-text-primary'>{currentSong[0].title}</h1>
                         <div className='uk-margin-bottom'>
                             <h3 className='uk-inline uk-margin-remove'><i className='fal fa-user-music'>&nbsp;</i></h3>
-                            <h3 className='uk-inline uk-margin-remove'>Song Artist </h3>
+                            <h3 className='uk-inline uk-margin-remove'>{currentSong[0].artist} </h3>
                         </div>
                         <div>
                             <h4 className='uk-inline uk-margin-remove uk-text-muted'><i className='fal fa-album'>&nbsp;</i></h4>
-                            <h4 className='uk-inline uk-margin-remove uk-text-muted'>Album Title</h4>
+                            <h4 className='uk-inline uk-margin-remove uk-text-muted'>{currentSong[0].album}</h4>
                         </div>
                     </div>
                 </div>

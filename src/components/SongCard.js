@@ -41,6 +41,7 @@ export default function SongCard(props) {
             artist: artists,
             title: songTitle,
             art: albumCover,
+            album: track.album.name,
             artMedium: albumCoverMedium,
             audio: playUrl,
             duration: track.duration_ms,
