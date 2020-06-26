@@ -5,6 +5,7 @@ import { currentSongState, isPlayingState } from '../store/states'
 import { toggleAudio, sleep } from '../utils/tools'
 
 export default function SongCard(props) {
+    console.log('props '+ props)
     const track = props.song.track;
     const artistsList = track.artists;
     const artistsNames = []
