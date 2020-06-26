@@ -14,14 +14,18 @@ export default function Playing() {
     const [pack, setPack] = useState([])
     //let [predict, setPredict] = useState([]);
 
+
     
     //when Playing component loads make authenticated request for suggestions songs
     //console.log('hello my dude')
     //console.log(currentSong[0].id.toString())
     useEffect(() => {
         axios
+
         .post( `https://bw3-ds.herokuapp.com/predict_all`, {"trackid" : currentSong[0].id})
         .then( (res) => setPack(res.data) )
+
+        
         .catch( (err) => console.log(err) )
         
     }, []);
@@ -89,7 +93,9 @@ export default function Playing() {
                         </div>
                     </div>
                 </div>
+
                 <RecommendedList pack={pack} />
+
             </div>
         </div>
     )

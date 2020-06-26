@@ -8,6 +8,7 @@ import { dataState } from '../store/states'
 import AlbumPage from './AlbumPage';
 
 export default function RecommendedCard(props) {
+<<<<<<< HEAD
     const [data, setData] = useState(
         {
             name: 'loading',
@@ -21,6 +22,10 @@ export default function RecommendedCard(props) {
             preview_url:null,
         }
     )
+=======
+
+    const [data, setData] = useState({})
+>>>>>>> a71ab16dc84b5b2503cb7602c691ca14401f1e59
     //let data = {};
     //console.log('hi')
     //console.log(props)
@@ -31,6 +36,7 @@ export default function RecommendedCard(props) {
     .post( `https://bw3-ds.herokuapp.com/track`, {"trackid" : props.song.track_id} )
     .then( (res) => {res.data})
     .catch( (err) => console.log(err) )*/
+
     const chartData = [
         {
             id: `${props.song.track_id}`,
