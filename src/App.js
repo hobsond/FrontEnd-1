@@ -62,7 +62,7 @@ export default function App() {
               <PrivateRoute path='/currentPlaylist' playlist={dataPlaylistTracks} component={PlayListPage} />
               <PrivateRoute path='/playlists' playlists={dataPlaylists} component={PlayLists} />
               <PrivateRoute path='/albumID123456789' component={AlbumPage} />
-              <PrivateRoute path='/' component={Home} />
+              <PrivateRoute exact path='/' component={Home} />
 
               <PlayQueue />
               <footer className="app-footer">
