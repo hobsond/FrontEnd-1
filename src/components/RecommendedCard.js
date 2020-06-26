@@ -20,7 +20,7 @@ export default function RecommendedCard(props) {
         <li className='uk-margin-remove-top'>
             <div className='uk-padding-small uk-grid-medium uk-grid'>
                 <div className='uk-width-auto'>
-                    <img className='uk-comment-avatar uk-border-circle' src='images/album-cover.jpg'
+                    <img className='uk-comment-avatar' src='images/album-cover.jpg'
                         width='50' height='50' alt='' />
                     {/* Source of this image needs to be replaced with album cover of song being recommended */}
                 </div>
