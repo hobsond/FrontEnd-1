@@ -81,17 +81,17 @@ export default function SongCard(props) {
                 </div>
                 <div className='uk-width-expand'>
                     <h4 className='uk-comment-title uk-margin-remove'>
-                        <p className='uk-link-reset' onClick={e=> exitModal()}>
+                        <a className='uk-link-reset'  onClick={e=> {e.preventDefault(); exitModal()}}>
                             {props.song.name}
-                        </p>
+                        </a>
                     </h4>
                     <small className=' uk-float-right'>{milliToMin(props.song.duration_ms)}</small>
                     <p className='uk-comment-meta uk-margin-remove-top'>
                         <i className='fal fa-user-music'></i>
-                        <a className='uk-link-reset uk-margin-small-left' href='#'>{props.song.artists[0].name}</a>
+                        <a className='uk-link-reset uk-margin-small-left' onClick={e=> {e.preventDefault(); exitModal()}}>{props.song.artists[0].name}</a>
                         <span className='uk-padding-small'>|</span>
                         <i className='fal fa-album'></i>
-                        <a className='uk-link-reset uk-margin-small-left' href='#'>{props.song.album.name}</a>
+                        <a className='uk-link-reset uk-margin-small-left' onClick={e=> {e.preventDefault(); exitModal()}}>{props.song.album.name}</a>
                     </p>
                 </div>
             </div>
