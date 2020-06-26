@@ -14,7 +14,7 @@ export default function Home() {
                             <div className='uk-card-body'>
                                 <h3 className='uk-card-title'>Most Popular This Week</h3>
                                 <ul data-uk-tab>
-                                    <li class="uk-active"><a href='#'>Rock</a></li>
+                                    <li className="uk-active"><a href='#'>Rock</a></li>
                                     <li><a href='#test'>Pop</a></li>
                                     <li><a href='#'>Dance</a></li>
                                     <li><a href='#'>Jazz</a></li>
